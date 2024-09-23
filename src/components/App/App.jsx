@@ -14,7 +14,6 @@ export const App = () => {
   };
 
   return (
-    <>
     <Layout>
       <Tabs
         restaurants={restaurants}
@@ -22,6 +21,5 @@ export const App = () => {
       />
       <Main restaurant={restaurants[restaurantId]}/>
     </Layout>
-    </>
   )
 };
