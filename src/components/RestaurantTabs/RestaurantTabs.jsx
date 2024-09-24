@@ -1,4 +1,4 @@
-export const Tabs = ({restaurants, changeRestaurant}) => {
+export const RestaurantTabs = ({restaurants, changeRestaurant}) => {
   return (
     <>
       {restaurants.length > 0 && 

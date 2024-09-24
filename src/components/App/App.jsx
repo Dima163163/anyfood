@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { restaurants } from '../../../materials/mock';
 import { Layout } from '../Layout/Layout'
-import { Main } from '../Main/Main'
-import { Tabs } from '../Tabs/Tabs';
+import { Restaurant } from '../Restaurant/Restaurant'
+import { RestaurantTabs } from '../RestaurantTabs/RestaurantTabs';
 
 export const App = () => {
   const [restaurantId, setRestaurantId] = useState(0);
@@ -15,11 +15,11 @@ export const App = () => {
 
   return (
     <Layout>
-      <Tabs
+      <RestaurantTabs
         restaurants={restaurants}
         changeRestaurant={changeRestaurant}
       />
-      <Main restaurant={restaurants[restaurantId]}/>
+      <Restaurant restaurant={restaurants[restaurantId]}/>
     </Layout>
   )
 };

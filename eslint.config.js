@@ -33,9 +33,7 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      "react/prop-types": 0
     },
-    "globals": {
-    "carrotquest": true
-    }
   },
 ]
