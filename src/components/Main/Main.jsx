@@ -2,7 +2,7 @@ import { Item } from '../Item/Item';
 import { List } from '../List/List';
 
 export const Main = ({restaurant}) => {
-  if (!restaurant) {
+  if (!restaurant.name) {
     return null
   }
   
