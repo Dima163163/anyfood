@@ -3,10 +3,10 @@ export const RestaurantTabs = ({restaurants, changeRestaurant}) => {
     <>
       {restaurants.length > 0 && 
         <div style={{display: 'flex', gap: '5px'}}>
-          {restaurants.map((restaurant, index) => (
+          {restaurants.map(restaurant => (
             <button
               key={restaurant.id}
-              onClick={() => changeRestaurant(index)}
+              onClick={() => changeRestaurant(restaurant.id)}
             >
               {restaurant.name}
             </button>
