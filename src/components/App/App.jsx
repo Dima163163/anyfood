@@ -6,14 +6,13 @@ import { RestaurantTabs } from '../RestaurantTabs/RestaurantTabs';
 
 export const App = () => {
   const firstId = restaurants[0].id;
-  const [restaurantId, setRestaurantId] = useState(firstId);
-  const [currentRestaurant, setCurrentRestaurant] = useState(restaurants[0])
+  const [restaurantActiveId, setRestaurantActiveId] = useState(firstId);
+  let restaurant = restaurants.find(restaurant => restaurant.id === restaurantActiveId);
 
   const changeRestaurant = (id) => {
-    if (restaurantId !== id) {
-      setRestaurantId(id);
-      const restaurant = restaurants.find(restaurant => restaurant.id === id);
-      setCurrentRestaurant(restaurant);
+    if (restaurantActiveId !== id) {
+      setRestaurantActiveId(id);
+      restaurant = restaurants.find(restaurant => restaurant.id === id);
     }
   };
 
@@ -23,7 +22,7 @@ export const App = () => {
         restaurants={restaurants}
         changeRestaurant={changeRestaurant}
       />
-      <Restaurant restaurant={currentRestaurant}/>
+      <Restaurant restaurant={restaurant}/>
     </Layout>
   )
 };
