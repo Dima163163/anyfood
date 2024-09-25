@@ -6,13 +6,12 @@ import { RestaurantTabs } from '../RestaurantTabs/RestaurantTabs';
 
 export const App = () => {
   const firstId = restaurants[0].id;
-  const [restaurantActiveId, setRestaurantActiveId] = useState(firstId);
-  let restaurant = restaurants.find(restaurant => restaurant.id === restaurantActiveId);
+  const [activeRestId, setActiveRestId] = useState(firstId);
+  const restaurant = restaurants.find(restaurant => restaurant.id === activeRestId);
 
   const changeRestaurant = (id) => {
-    if (restaurantActiveId !== id) {
-      setRestaurantActiveId(id);
-      restaurant = restaurants.find(restaurant => restaurant.id === id);
+    if (activeRestId !== id) {
+      setActiveRestId(id);
     }
   };
 
