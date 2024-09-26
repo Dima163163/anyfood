@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { restaurants } from '../../../materials/mock';
 import { Layout } from '../Layout/Layout'
-import { Restaurant } from '../Restaurant/Restaurant'
-import { RestaurantTabs } from '../RestaurantTabs/RestaurantTabs';
+import { RestaurantPage } from '../RestaurantPage/RestaurantPage'
+import { RestaurantTab } from '../RestaurantTab/RestaurantTab';
 
 export const App = () => {
   const firstId = restaurants[0].id;
   const [activeRestId, setActiveRestId] = useState(firstId);
-  const restaurant = restaurants.find(restaurant => restaurant.id === activeRestId);
+  const restaurantActive = restaurants.find(restaurant => restaurant.id === activeRestId);
 
   const changeRestaurant = (id) => {
     if (activeRestId !== id) {
@@ -17,11 +17,44 @@ export const App = () => {
 
   return (
     <Layout>
-      <RestaurantTabs
-        restaurants={restaurants}
-        changeRestaurant={changeRestaurant}
-      />
-      <Restaurant restaurant={restaurant}/>
+      {restaurants.length > 0 && restaurants.map(restaurant => (
+        <RestaurantTab
+          key={restaurant.id}
+          title={restaurant.name}
+          changeRestaurant={() => changeRestaurant(restaurant.id)}
+          isActive={restaurant.id === activeRestId}
+        />
+      ))}
+      {restaurantActive && (
+        <RestaurantPage restaurantActive={restaurantActive}/>
+      )}
+      {restaurantActive && (
+        <RestaurantPage restaurantActive={restaurantActive}/>
+      )}
+      {restaurantActive && (
+        <RestaurantPage restaurantActive={restaurantActive}/>
+      )}
+      {restaurantActive && (
+        <RestaurantPage restaurantActive={restaurantActive}/>
+      )}
+      {restaurantActive && (
+        <RestaurantPage restaurantActive={restaurantActive}/>
+      )}
+      {restaurantActive && (
+        <RestaurantPage restaurantActive={restaurantActive}/>
+      )}
+      {restaurantActive && (
+        <RestaurantPage restaurantActive={restaurantActive}/>
+      )}
+      {restaurantActive && (
+        <RestaurantPage restaurantActive={restaurantActive}/>
+      )}
+      {restaurantActive && (
+        <RestaurantPage restaurantActive={restaurantActive}/>
+      )}
+      {restaurantActive && (
+        <RestaurantPage restaurantActive={restaurantActive}/>
+      )}
     </Layout>
   )
 };
