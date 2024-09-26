@@ -31,6 +31,7 @@ export const ReviewForm = () => {
         <label>Имя</label>
         <input
           type="text"
+          name="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -39,6 +40,7 @@ export const ReviewForm = () => {
         <label>Текст отзыва</label>
         <input
           type="text"
+          name="review"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />

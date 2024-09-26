@@ -1,9 +1,9 @@
-import { DishCounter } from '../../DishCounter/DishCounter';
+import { DishCounter } from '../DishCounter/DishCounter';
 
-export const ItemMenu = ({text}) => {
+export const ItemMenu = ({ text }) => {
   return (
-      <li>
-        {text} <DishCounter/>
-      </li>
+    <li>
+      {text} <DishCounter />
+    </li>
   );
 };
