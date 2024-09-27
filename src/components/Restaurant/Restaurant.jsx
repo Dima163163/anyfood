@@ -1,34 +1,36 @@
 import { ItemMenu } from '../ItemMenu/ItemMenu';
 import { ItemReview } from '../ItemReview/ItemReview'
+import { ReviewForm } from '../ReviewForm/ReviewForm';
 
-export const Restaurant = ({ restaurant }) => {
-  if (!restaurant.name) {
+export const Restaurant = ({ restaurantActive }) => {
+  if (!restaurantActive.name) {
     return null;
   }
 
   return (
     <main>
-      <h2>{restaurant.name}</h2>
-      {restaurant.menu.length > 0 && (
+      <h2>{restaurantActive.name}</h2>
+      {restaurantActive.menu.length > 0 && (
         <>
           <h3>Меню</h3>
           <ul>
-            {restaurant.menu.map((menu) => (
+            {restaurantActive.menu.map((menu) => (
               <ItemMenu key={menu.id} type='menu' text={menu.name} />
             ))}
           </ul>
         </>
       )}
-      {restaurant.reviews.length > 0 && (
+      {restaurantActive.reviews.length > 0 && (
         <>
           <h3>Отзывы</h3>
           <ul>
-            {restaurant.reviews.map((review) => (
+            {restaurantActive.reviews.map((review) => (
               <ItemReview key={review.id} type='review' text={review.text} />
             ))}
           </ul>
         </>
       )}
+      <ReviewForm/>
     </main>
   );
 };

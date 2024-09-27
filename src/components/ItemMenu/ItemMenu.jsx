@@ -1,9 +1,9 @@
-import { Counter } from '../Counter/Counter';
+import { DishCounter } from '../DishCounter/DishCounter';
 
-export const ItemMenu = ({text}) => {
+export const ItemMenu = ({ text }) => {
   return (
-      <li>
-        {text} <Counter/>
-      </li>
+    <li>
+      {text} <DishCounter />
+    </li>
   );
 };

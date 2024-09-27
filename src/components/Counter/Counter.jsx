@@ -1,25 +1,9 @@
-import { useState } from 'react'
-
-export const Counter = () => {
-  const [count, setCount] = useState(0);
-
-  const addProduct = () => {
-    if (count < 5) {
-      setCount(count + 1)
-    }
-  };
-
-  const removeProduct = () => {
-    if (count > 0) {
-      setCount(count - 1)
-    }
-  };
-
+export const Counter = ({count, increment, decrement}) => {
   return (
     <>
-      <button onClick={addProduct}>+</button>
+      <button onClick={increment}>+</button>
       {count}
-      <button onClick={removeProduct}>-</button>
+      <button onClick={decrement}>-</button>
     </>
   )
 };
