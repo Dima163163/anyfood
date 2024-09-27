@@ -5,7 +5,8 @@ export const ProgressBar = () => {
   useEffect(() => {
     const calculetesScroll = () => {
       const height =
-        document.body.scrollHeight - document.documentElement.clientHeight;
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
       const scroll = document.documentElement.scrollTop;
       const percent = (scroll / height) * 100;
       setPercent(percent);
