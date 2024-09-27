@@ -4,11 +4,9 @@ export const ProgressBar = () => {
   const [pecent, setPercent] = useState(0);
   useEffect(() => {
     const calculetesScroll = () => {
-      const height =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      const scroll = document.documentElement.scrollTop;
-      const percent = (scroll / height) * 100;
+      const percent =
+        (window.scrollY / (document.body.scrollHeight - window.innerHeight)) *
+        100;
       setPercent(percent);
     };
     window.addEventListener('scroll', calculetesScroll);
