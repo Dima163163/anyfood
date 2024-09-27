@@ -11,22 +11,20 @@ export const ReviewForm = () => {
     setClear} = useForm();
 
 
-  const addRating = (e) => {
-    e.preventDefault()
+  const addRating = () => {
     if (rating < 5) {
       setRating(rating + 1)
     }
   };
 
-  const removeRating = (e) => {
-    e.preventDefault()
+  const removeRating = () => {
     if (rating > 1) {
       setRating(rating - 1)
     }
   };
 
   return (
-    <form>
+    <form onSubmit={(e) => {e.preventDefault()}}>
       <div>
         <label>Имя</label>
         <input
@@ -54,10 +52,7 @@ export const ReviewForm = () => {
         />
       </div>
       <button
-        onClick={(e) => {
-          e.preventDefault();
-          setClear();
-        }}
+        onClick={setClear}
       >Clear</button>
     </form>
   )

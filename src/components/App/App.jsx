@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { restaurants } from '../../../materials/mock';
 import { Layout } from '../Layout/Layout'
-import { RestaurantPage } from '../RestaurantPage/RestaurantPage'
+import { Restaurant } from '../Restaurant/Restaurant'
 import { RestaurantTab } from '../RestaurantTab/RestaurantTab';
 
 export const App = () => {
@@ -26,34 +26,34 @@ export const App = () => {
         />
       ))}
       {restaurantActive && (
-        <RestaurantPage restaurantActive={restaurantActive}/>
+        <Restaurant restaurantActive={restaurantActive}/>
       )}
       {restaurantActive && (
-        <RestaurantPage restaurantActive={restaurantActive}/>
+        <Restaurant restaurantActive={restaurantActive}/>
       )}
       {restaurantActive && (
-        <RestaurantPage restaurantActive={restaurantActive}/>
+        <Restaurant restaurantActive={restaurantActive}/>
       )}
       {restaurantActive && (
-        <RestaurantPage restaurantActive={restaurantActive}/>
+        <Restaurant restaurantActive={restaurantActive}/>
       )}
       {restaurantActive && (
-        <RestaurantPage restaurantActive={restaurantActive}/>
+        <Restaurant restaurantActive={restaurantActive}/>
       )}
       {restaurantActive && (
-        <RestaurantPage restaurantActive={restaurantActive}/>
+        <Restaurant restaurantActive={restaurantActive}/>
       )}
       {restaurantActive && (
-        <RestaurantPage restaurantActive={restaurantActive}/>
+        <Restaurant restaurantActive={restaurantActive}/>
       )}
       {restaurantActive && (
-        <RestaurantPage restaurantActive={restaurantActive}/>
+        <Restaurant restaurantActive={restaurantActive}/>
       )}
       {restaurantActive && (
-        <RestaurantPage restaurantActive={restaurantActive}/>
+        <Restaurant restaurantActive={restaurantActive}/>
       )}
       {restaurantActive && (
-        <RestaurantPage restaurantActive={restaurantActive}/>
+        <Restaurant restaurantActive={restaurantActive}/>
       )}
     </Layout>
   )

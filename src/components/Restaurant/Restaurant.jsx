@@ -2,7 +2,7 @@ import { ItemMenu } from '../ItemMenu/ItemMenu';
 import { ItemReview } from '../ItemReview/ItemReview'
 import { ReviewForm } from '../ReviewForm/ReviewForm';
 
-export const RestaurantPage = ({ restaurantActive }) => {
+export const Restaurant = ({ restaurantActive }) => {
   if (!restaurantActive.name) {
     return null;
   }
