@@ -1,0 +1,12 @@
+.restaurantTab {
+  border: none;
+  padding: 0 0 2px 0;
+  background-color: transparent;
+  border-bottom: 2px solid white;
+  color: white;
+}
+
+.restaurantTab:disabled {
+  color: bisque;
+  border-bottom: 2px solid bisque;
+}

@@ -1,0 +1,47 @@
+.restaurant {
+  flex: 1 1 auto;
+}
+
+.restautantWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto; 
+}
+
+.restaurantTitle {
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 15px;
+  font-size: 30px;
+}
+
+.menuTitle {
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.resturantMenuList {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.reviesTitle {
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.reviewsList {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}

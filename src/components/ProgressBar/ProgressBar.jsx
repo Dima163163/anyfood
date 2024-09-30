@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 
+import styles from './ProgressBar.module.css';
+
 export const ProgressBar = () => {
   const [pecent, setPercent] = useState(0);
+
   useEffect(() => {
     const calculetesScroll = () => {
       const percent =
-        (window.scrollY / (document.body.scrollHeight - window.innerHeight)) *
-        100;
+        Math.floor((window.scrollY / (document.body.scrollHeight - window.innerHeight)) *
+        100);
       setPercent(percent);
     };
     window.addEventListener('scroll', calculetesScroll);
@@ -18,10 +21,8 @@ export const ProgressBar = () => {
 
   return (
     <div
+      className={styles.progressBar}
       style={{
-        position: 'fixed',
-        backgroundColor: 'red',
-        height: '10px',
         width: `${pecent}%`
       }}
     ></div>

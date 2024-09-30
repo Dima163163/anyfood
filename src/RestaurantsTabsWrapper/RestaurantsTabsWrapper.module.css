@@ -1,0 +1,7 @@
+.wrapperTabs {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: grey;
+}
