@@ -7,19 +7,20 @@ export const ReviewForm = () => {
     rating,
     setName,
     setText,
-    setRating,
+    setIncrementRating,
+    setDecrementRating,
     setClear} = useForm();
 
 
   const addRating = () => {
     if (rating < 5) {
-      setRating(rating + 1)
+      setIncrementRating()
     }
   };
 
   const removeRating = () => {
     if (rating > 1) {
-      setRating(rating - 1)
+      setDecrementRating()
     }
   };
 
