@@ -1,0 +1,13 @@
+.menuTitle {
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.resturantMenuList {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 15px;
+}
