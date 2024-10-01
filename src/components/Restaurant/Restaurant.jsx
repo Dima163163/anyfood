@@ -1,6 +1,9 @@
-import { ItemMenu } from '../ItemMenu/ItemMenu';
-import { ItemReview } from '../ItemReview/ItemReview'
+import { Container } from '../Container/Container';
+import { RestaurantActiveMenu } from '../RestaurantActiveMenu/RestaurantActiveMenu';
+import { RestaurantActiveReviews } from '../RestaurantActiveReviews/RestaurantActiveReviews';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
+
+import styles from './Restaurant.module.css';
 
 export const Restaurant = ({ restaurantActive }) => {
   if (!restaurantActive.name) {
@@ -8,29 +11,21 @@ export const Restaurant = ({ restaurantActive }) => {
   }
 
   return (
-    <main>
-      <h2>{restaurantActive.name}</h2>
-      {restaurantActive.menu.length > 0 && (
-        <>
-          <h3>Меню</h3>
-          <ul>
-            {restaurantActive.menu.map((menu) => (
-              <ItemMenu key={menu.id} type='menu' text={menu.name} />
-            ))}
-          </ul>
-        </>
-      )}
-      {restaurantActive.reviews.length > 0 && (
-        <>
-          <h3>Отзывы</h3>
-          <ul>
-            {restaurantActive.reviews.map((review) => (
-              <ItemReview key={review.id} type='review' text={review.text} />
-            ))}
-          </ul>
-        </>
-      )}
-      <ReviewForm/>
+    <main className={styles.restaurant}>
+      <Container>
+        <div className={styles.restautantWrapper}>
+          <h2 className={styles.restaurantTitle}>{restaurantActive.name}</h2>
+          {restaurantActive.menu.length > 0 && (
+            <RestaurantActiveMenu restaurantActive={restaurantActive} />
+          )}
+          {restaurantActive.reviews.length > 0 && (
+            <RestaurantActiveReviews
+              restaurantActive={restaurantActive}
+            />
+          )}
+          <ReviewForm/>
+        </div>
+      </Container>
     </main>
   );
 };

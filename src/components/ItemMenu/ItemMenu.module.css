@@ -1,0 +1,12 @@
+.listItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.listItem:not(last-child) {
+  margin-bottom: 10px;
+}
+
+.listItemText {
+  font-size: 18px;
+}

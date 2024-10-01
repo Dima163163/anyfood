@@ -1,9 +1,9 @@
-export const Counter = ({count, increment, decrement}) => {
+export const Counter = ({ count, increment, decrement, styleWrapper,styleBtn}) => {
   return (
-    <>
-      <button onClick={increment}>+</button>
+    <div className={styleWrapper}>
+      <button className={styleBtn} onClick={increment}>+</button>
       {count}
-      <button onClick={decrement}>-</button>
-    </>
-  )
+      <button className={styleBtn} onClick={decrement}>-</button>
+    </div>
+  );
 };
