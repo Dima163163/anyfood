@@ -6,7 +6,7 @@ import { RestaurantTab } from '../RestaurantTab/RestaurantTab';
 
 import 'normalize.css';
 import './App.css';
-import { RestaurantsTabsWrapper } from '../../RestaurantsTabsWrapper/RestaurantsTabsWrapper';
+import { RestaurantsTabsWrapper } from '../RestaurantsTabsWrapper/RestaurantsTabsWrapper';
 import { Container } from '../Container/Container';
 import { ResturantsTabsSection } from '../ResturantsTabsSection/ResturantsTabsSection';
 
