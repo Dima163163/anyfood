@@ -9,6 +9,8 @@ import './App.css';
 import { RestaurantsTabsWrapper } from '../RestaurantsTabsWrapper/RestaurantsTabsWrapper';
 import { Container } from '../Container/Container';
 import { ResturantsTabsSection } from '../ResturantsTabsSection/ResturantsTabsSection';
+import { ThemeContextProvider } from '../../context/themeContext/ThemeContextProvider';
+import { UserContextProvider } from '../../context/userContext/UserContextProvider';
 
 export const App = () => {
   const firstId = restaurants[0].id;
@@ -22,26 +24,30 @@ export const App = () => {
   };
 
   return (
-    <Layout>
-      {restaurants.length > 0 && (
-        <ResturantsTabsSection>
-          <Container>
-            <RestaurantsTabsWrapper>
-                {restaurants.map(restaurant => (
-                  <RestaurantTab
-                    key={restaurant.id}
-                    title={restaurant.name}
-                    changeRestaurant={() => changeRestaurant(restaurant.id)}
-                    isActive={restaurant.id === activeRestId}
-                  />
-                ))}
-            </RestaurantsTabsWrapper>
-          </Container>
-        </ResturantsTabsSection>
-      )}
-      {restaurantActive && (
-        <Restaurant restaurantActive={restaurantActive}/>
-      )}
-    </Layout>
+    <UserContextProvider>
+      <ThemeContextProvider>
+        <Layout>
+          {restaurants.length > 0 && (
+            <ResturantsTabsSection>
+              <Container>
+                <RestaurantsTabsWrapper>
+                    {restaurants.map(restaurant => (
+                      <RestaurantTab
+                        key={restaurant.id}
+                        title={restaurant.name}
+                        changeRestaurant={() => changeRestaurant(restaurant.id)}
+                        isActive={restaurant.id === activeRestId}
+                      />
+                    ))}
+                </RestaurantsTabsWrapper>
+              </Container>
+            </ResturantsTabsSection>
+          )}
+          {restaurantActive && (
+            <Restaurant restaurantActive={restaurantActive}/>
+          )}
+        </Layout>
+      </ThemeContextProvider>
+    </UserContextProvider>
   )
 };

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Counter } from '../Counter/Counter';
 
-import styles from './DishCounter.module.css';
 
 export const DishCounter = () => {
   const [count, setCount] = useState(0);
@@ -17,5 +16,12 @@ export const DishCounter = () => {
       setCount(count - 1);
     }
   };
-  return <Counter count={count} increment={increment} decrement={decrement} styleWrapper={styles.wrapper} styleBtn={styles.dashCounterBtn} />;
+  return (
+    <Counter
+      count={count}
+      increment={increment}
+      decrement={decrement}
+      styleTypeWrapper="wrapperCounterMenu" typeBtn="dashCounterBtn" 
+    />
+  );
 };

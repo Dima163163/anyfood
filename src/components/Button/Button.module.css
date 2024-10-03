@@ -1,0 +1,71 @@
+.dashCounterBtn,
+.ratingBtn {
+  border: 2px solid black;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.ratingBtn:active,
+.dashCounterBtn:active {
+  background-color: gray;
+  color: white;
+}
+
+.clearBtn {
+  border: 2px solid black;
+  padding: 10px 20px;
+  border-radius: 10px
+}
+
+.themeBtn,
+.loginUserBtn {
+  padding: 10px 20px;
+  font-size: 12px;
+  border-radius: 6px;
+  border: 1px solid white;
+}
+
+.clearBtn:active {
+  background-color: gray;
+  color: white;
+}
+
+.restaurantTab {
+  border: none;
+  padding: 0 0 2px 0;
+  background-color: transparent;
+}
+
+.light {
+  color: black;
+  background-color: white;
+  border-color: gray;
+}
+
+.dark {
+  color: white;
+  background-color: black;
+  border-color: white;
+}
+
+.lightTab {
+  border-bottom: 2px solid black;
+  color: black;
+}
+
+.lightTab:disabled {
+  color: bisque;
+  border-bottom: 2px solid bisque;
+}
+
+.darkTab {
+  border-bottom: 2px solid white;
+  color: white;;
+}
+
+.darkTab:disabled {
+  color: #18181d;
+  border-bottom: 2px solid #18181d;
+}

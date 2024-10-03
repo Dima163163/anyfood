@@ -1,3 +1,4 @@
+import { useUser } from '../../context/userContext/useUser';
 import { Container } from '../Container/Container';
 import { RestaurantActiveMenu } from '../RestaurantActiveMenu/RestaurantActiveMenu';
 import { RestaurantActiveReviews } from '../RestaurantActiveReviews/RestaurantActiveReviews';
@@ -6,6 +7,7 @@ import { ReviewForm } from '../ReviewForm/ReviewForm';
 import styles from './Restaurant.module.css';
 
 export const Restaurant = ({ restaurantActive }) => {
+  const {user} = useUser();
   if (!restaurantActive.name) {
     return null;
   }
@@ -23,7 +25,7 @@ export const Restaurant = ({ restaurantActive }) => {
               restaurantActive={restaurantActive}
             />
           )}
-          <ReviewForm/>
+          {user && <ReviewForm/>}
         </div>
       </Container>
     </main>
