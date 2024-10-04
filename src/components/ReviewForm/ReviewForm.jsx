@@ -54,11 +54,17 @@ export const ReviewForm = () => {
           count={rating}
           increment={addRating}
           decrement={removeRating}
-          styleTypeWrapper="ratingWrapper"
-          typeBtn="ratingBtn"
+          styleTypeWrapper="default"
+          styleViewVariant="border"
+          colorViewVariant="darkBtn"
         />
       </div>
-      <Button onClick={setClear} text="Clear" typeBtn="clearBtn"/>
+      <Button
+        onClick={setClear}
+        text="Clear"
+        styleViewVariant="border"
+        colorViewVariant="darkBtn"
+      />
     </form>
   )
 }

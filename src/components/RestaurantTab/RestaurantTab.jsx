@@ -6,7 +6,8 @@ export const RestaurantTab = ({title, changeRestaurant, isActive}) => {
       onClick={changeRestaurant}
       isActive={isActive}
       text={title}
-      typeBtn="restaurantTab"
+      sizeViewVariant="default"
+      styleViewVariant="notBorder"
     />
   )
 };

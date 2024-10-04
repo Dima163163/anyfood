@@ -21,7 +21,9 @@ export const DishCounter = () => {
       count={count}
       increment={increment}
       decrement={decrement}
-      styleTypeWrapper="wrapperCounterMenu" typeBtn="dashCounterBtn" 
+      styleTypeWrapper="default"
+      styleViewVariant="border"
+      colorViewVariant="darkBtn"
     />
   );
 };

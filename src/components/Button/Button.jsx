@@ -3,38 +3,31 @@ import classnames from 'classnames';
 import styles from './Button.module.css';
 
 
-const Button = ({onClick, text, typeBtn, isActive=false}) => {
+const Button = ({
+  onClick,
+  text,
+  sizeViewVariant,
+  isActive=false,
+  colorViewVariant,
+  styleViewVariant
+}) => {
   const {theme} = useTheme();
-  console.log('theme: ', theme);
+
   return (
     <button
       onClick={onClick}
       disabled={isActive}
       className={
-        classnames(
+        classnames(styles.button,
           {
-            [styles.dashCounterBtn]: typeBtn === 'dashCounterBtn',
-            [styles.themeBtn]: typeBtn === 'themeBtn',
-            [styles.loginUserBtn]: typeBtn === 'loginUserBtn',
-            [styles.ratingBtn]: typeBtn === 'ratingBtn',
-            [styles.clearBtn]: typeBtn === 'clearBtn',
-            [styles.restaurantTab]: typeBtn === 'restaurantTab',
-            [styles.lightTab]: typeBtn === 'restaurantTab' && theme === 'light',
-            [styles.darkTab]: typeBtn === 'restaurantTab' && theme === 'dark',
-            [styles.light]: (
-              typeBtn === 'ratingBtn'
-              || typeBtn === 'clearBtn'
-              || typeBtn === 'dashCounterBtn'
-              || typeBtn === 'themeBtn'
-              || typeBtn === 'liginUserBtn'
-            ) && theme === 'light',
-            [styles.dark]: (
-              typeBtn === 'ratingBtn'
-              || typeBtn === 'clearBtn'
-              || typeBtn === 'dashCounterBtn'
-              || typeBtn === 'themeBtn'
-              || typeBtn === 'liginUserBtn'
-            ) && theme === 'dark',
+            [styles.default]: sizeViewVariant === "default",
+            [styles.xl]: sizeViewVariant === "xl",
+            [styles.border]: styleViewVariant === "border",
+            [styles.notBorder]: styleViewVariant === "notBorder",
+            [styles.darkBtn]: colorViewVariant === "darkBtn",
+            [styles.lightBtn]: colorViewVariant === "lightBtn",
+            [styles.light]: theme === "light",
+            [styles.dark]: theme === "dark",
           }
         )
       }
