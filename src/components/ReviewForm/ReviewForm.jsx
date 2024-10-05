@@ -2,6 +2,7 @@ import { Counter } from '../Counter/Counter';
 import { useForm } from './useForm';
 
 import styles from './ReviewForm.module.css';
+import Button from '../Button/Button';
 
 export const ReviewForm = () => {
   const {name,
@@ -53,14 +54,17 @@ export const ReviewForm = () => {
           count={rating}
           increment={addRating}
           decrement={removeRating}
-          styleWrapper={styles.ratingWrapper}
-          styleBtn={styles.ratingBtn}
+          styleTypeWrapper="default"
+          styleViewVariant="border"
+          colorViewVariant="darkBtn"
         />
       </div>
-      <button
-        className={styles.clearBtn}
+      <Button
         onClick={setClear}
-      >Clear</button>
+        text="Clear"
+        styleViewVariant="border"
+        colorViewVariant="darkBtn"
+      />
     </form>
   )
 }

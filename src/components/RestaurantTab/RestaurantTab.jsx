@@ -1,13 +1,13 @@
-import styles from './RestaurantTab.module.css';
+import Button from '../Button/Button';
 
 export const RestaurantTab = ({title, changeRestaurant, isActive}) => {
   return (
-    <button
-      className={styles.restaurantTab}
+    <Button
       onClick={changeRestaurant}
-      disabled={isActive}
-    >
-      {title}
-    </button>
+      isActive={isActive}
+      text={title}
+      sizeViewVariant="default"
+      styleViewVariant="notBorder"
+    />
   )
 };

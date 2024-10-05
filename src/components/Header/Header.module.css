@@ -8,3 +8,8 @@
   color: aliceblue;
   font-size: 24px;
 }
+
+.headerBtnsContainer {
+  display: flex;
+  gap: 10px;
+}
