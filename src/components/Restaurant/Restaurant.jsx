@@ -1,14 +1,21 @@
+import { useSelector } from 'react-redux';
 import { useUser } from '../../context/userContext/useUser';
 import { Container } from '../Container/Container';
 import { RestaurantActiveMenu } from '../RestaurantActiveMenu/RestaurantActiveMenu';
-import { RestaurantActiveReviews } from '../RestaurantActiveReviews/RestaurantActiveReviews';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
 
 import styles from './Restaurant.module.css';
+import { selectRestaurantById } from '../../redux/restaurants';
+import { RestaurantActiveReviews } from '../RestaurantActiveReviews/RestaurantActiveReviews';
 
-export const Restaurant = ({ restaurantActive }) => {
-  const {user} = useUser();
-  if (!restaurantActive.name) {
+export const Restaurant = ({ id }) => {
+  const restaurant = useSelector((state) => selectRestaurantById(state, id));
+
+  const { name, menu, reviews } = restaurant || {};
+
+  const { user } = useUser();
+
+  if (!name) {
     return null;
   }
 
@@ -16,16 +23,12 @@ export const Restaurant = ({ restaurantActive }) => {
     <main className={styles.restaurant}>
       <Container>
         <div className={styles.restautantWrapper}>
-          <h2 className={styles.restaurantTitle}>{restaurantActive.name}</h2>
-          {restaurantActive.menu.length > 0 && (
-            <RestaurantActiveMenu restaurantActive={restaurantActive} />
+          <h2 className={styles.restaurantTitle}>{name}</h2>
+          {menu.length > 0 && <RestaurantActiveMenu menuIds={menu} />}
+          {reviews.length > 0 && (
+            <RestaurantActiveReviews reviewsIds={reviews} />
           )}
-          {restaurantActive.reviews.length > 0 && (
-            <RestaurantActiveReviews
-              restaurantActive={restaurantActive}
-            />
-          )}
-          {user && <ReviewForm/>}
+          {user && <ReviewForm />}
         </div>
       </Container>
     </main>

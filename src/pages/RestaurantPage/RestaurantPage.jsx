@@ -4,13 +4,15 @@ import { RestaurantsTabsWrapper } from '../../components/RestaurantsTabsWrapper/
 import { RestaurantTab } from '../../components/RestaurantTab/RestaurantTab';
 import { ResturantsTabsSection } from '../../components/ResturantsTabsSection/ResturantsTabsSection';
 import { Restaurant } from '../../components/Restaurant/Restaurant';
-
-import { restaurants } from '../../../materials/mock';
+import { useSelector } from 'react-redux';
+import { selectRestaurantsIds } from '../../redux/restaurants';
+import { normalizedRestaurants } from '../../../materials/normalized-mock';
 
 export const RestaurantPage = () => {
-  const firstId = restaurants[0].id;
-  const [activeRestId, setActiveRestId] = useState(firstId);
-  const restaurantActive = restaurants.find(restaurant => restaurant.id === activeRestId);
+  const restaurantsIds = useSelector(selectRestaurantsIds);
+
+  const [activeRestId, setActiveRestId] = useState(restaurantsIds[0]);
+
   const changeRestaurant = (id) => {
     if (activeRestId !== id) {
       setActiveRestId(id);
@@ -19,25 +21,23 @@ export const RestaurantPage = () => {
 
   return (
     <>
-      {restaurants.length > 0 && (
-      <ResturantsTabsSection>
-        <Container>
-          <RestaurantsTabsWrapper>
-              {restaurants.map(restaurant => (
+      {normalizedRestaurants.length > 0 && (
+        <ResturantsTabsSection>
+          <Container>
+            <RestaurantsTabsWrapper>
+              {normalizedRestaurants.map(({ id }) => (
                 <RestaurantTab
-                  key={restaurant.id}
-                  title={restaurant.name}
-                  changeRestaurant={() => changeRestaurant(restaurant.id)}
-                  isActive={restaurant.id === activeRestId}
+                  key={id}
+                  id={id}
+                  onClick={() => changeRestaurant(id)}
+                  isActive={id === activeRestId}
                 />
               ))}
-          </RestaurantsTabsWrapper>
-        </Container>
-      </ResturantsTabsSection>
-    )}
-    {restaurantActive && (
-      <Restaurant restaurantActive={restaurantActive}/>
-    )}
+            </RestaurantsTabsWrapper>
+          </Container>
+        </ResturantsTabsSection>
+      )}
+      <Restaurant key={activeRestId} id={activeRestId} />
     </>
-  )
-}
+  );
+};
