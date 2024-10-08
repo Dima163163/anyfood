@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { normalizedDishes } from '../../../materials/normalized-mock';
 
 const initialState = {
-  enteties: normalizedDishes.reduce((acc, item) => {
+  entities: normalizedDishes.reduce((acc, item) => {
     acc[item.id] = item;
 
     return acc;
@@ -14,7 +14,7 @@ export const dishesSlice = createSlice({
   name: 'dishes',
   initialState,
   selectors: {
-    selectDisheById: (state, id) => state.enteties[id]
+    selectDisheById: (state, id) => state.entities[id]
   }
 });
 

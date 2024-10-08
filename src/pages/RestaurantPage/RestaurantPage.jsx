@@ -6,7 +6,6 @@ import { ResturantsTabsSection } from '../../components/ResturantsTabsSection/Re
 import { Restaurant } from '../../components/Restaurant/Restaurant';
 import { useSelector } from 'react-redux';
 import { selectRestaurantsIds } from '../../redux/restaurants';
-import { normalizedRestaurants } from '../../../materials/normalized-mock';
 
 export const RestaurantPage = () => {
   const restaurantsIds = useSelector(selectRestaurantsIds);
@@ -21,11 +20,11 @@ export const RestaurantPage = () => {
 
   return (
     <>
-      {normalizedRestaurants.length > 0 && (
+      {restaurantsIds.length > 0 && (
         <ResturantsTabsSection>
           <Container>
             <RestaurantsTabsWrapper>
-              {normalizedRestaurants.map(({ id }) => (
+              {restaurantsIds.map((id) => (
                 <RestaurantTab
                   key={id}
                   id={id}
