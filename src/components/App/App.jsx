@@ -5,15 +5,19 @@ import { RestaurantPage } from '../../pages/RestaurantPage/RestaurantPage';
 
 import 'normalize.css';
 import './App.css';
+import { Provider } from 'react-redux';
+import { store } from '../../redux/store';
 
 export const App = () => {
   return (
-    <UserContextProvider>
-      <ThemeContextProvider>
-        <Layout>
-          <RestaurantPage/>
-        </Layout>
-      </ThemeContextProvider>
-    </UserContextProvider>
+    <Provider store={store}>
+      <UserContextProvider>
+        <ThemeContextProvider>
+          <Layout>
+            <RestaurantPage/>
+          </Layout>
+        </ThemeContextProvider>
+      </UserContextProvider>
+    </Provider>
   )
 };

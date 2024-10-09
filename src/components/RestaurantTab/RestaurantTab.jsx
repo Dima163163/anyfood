@@ -1,13 +1,21 @@
+import { useSelector } from 'react-redux';
 import Button from '../Button/Button';
+import { selectRestaurantById } from '../../redux/restaurants';
 
-export const RestaurantTab = ({title, changeRestaurant, isActive}) => {
+export const RestaurantTab = ({ id, onClick, isActive }) => {
+  const restaurant = useSelector((state) => selectRestaurantById(state, id));
+
+  if (!restaurant) {
+    return null;
+  }
+
   return (
     <Button
-      onClick={changeRestaurant}
+      onClick={onClick}
       isActive={isActive}
-      text={title}
-      sizeViewVariant="default"
-      styleViewVariant="notBorder"
+      text={restaurant.name}
+      sizeViewVariant='default'
+      styleViewVariant='notBorder'
     />
-  )
+  );
 };
