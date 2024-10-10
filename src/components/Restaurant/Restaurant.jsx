@@ -1,36 +1,52 @@
-import { useSelector } from 'react-redux';
-import { useUser } from '../../context/userContext/useUser';
 import { Container } from '../Container/Container';
-import { RestaurantActiveMenu } from '../RestaurantActiveMenu/RestaurantActiveMenu';
-import { ReviewForm } from '../ReviewForm/ReviewForm';
+import { NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
 
 import styles from './Restaurant.module.css';
-import { selectRestaurantById } from '../../redux/restaurants';
-import { RestaurantActiveReviews } from '../RestaurantActiveReviews/RestaurantActiveReviews';
+import { useTheme } from '../../context/themeContext/useTheme';
+import classnames from 'classnames';
+import { useEffect } from 'react';
 
-export const Restaurant = ({ id }) => {
-  const restaurant = useSelector((state) => selectRestaurantById(state, id));
+export const Restaurant = ({ name }) => {
+  const { restaurantId } = useParams();
+  const { theme } = useTheme();
+  const navigate = useNavigate();
 
-  const { name, menu, reviews } = restaurant || {};
-
-  const { user } = useUser();
+  useEffect(() => {
+    navigate('menu');
+  }, [navigate, restaurantId]);
 
   if (!name) {
     return null;
   }
 
   return (
-    <main className={styles.restaurant}>
-      <Container>
-        <div className={styles.restautantWrapper}>
-          <h2 className={styles.restaurantTitle}>{name}</h2>
-          {menu.length > 0 && <RestaurantActiveMenu menuIds={menu} />}
-          {reviews.length > 0 && (
-            <RestaurantActiveReviews reviewsIds={reviews} />
-          )}
-          {user && <ReviewForm />}
+    <Container>
+      <div className={styles.restautantWrapper}>
+        <h2 className={styles.restaurantTitle}>{name}</h2>
+        <div className={styles.tabsWrapper}>
+          <NavLink
+            className={classnames(
+              styles.navTab,
+              ({ isActive }) => isActive && 'active',
+              theme === 'light' ? styles.light : styles.dark
+            )}
+            to='menu'
+          >
+            Меню
+          </NavLink>
+          <NavLink
+            className={classnames(
+              styles.navTab,
+              ({ isActive }) => isActive && 'active',
+              theme === 'light' ? styles.light : styles.dark
+            )}
+            to='reviews'
+          >
+            Отзывы
+          </NavLink>
         </div>
-      </Container>
-    </main>
+        <Outlet />
+      </div>
+    </Container>
   );
 };

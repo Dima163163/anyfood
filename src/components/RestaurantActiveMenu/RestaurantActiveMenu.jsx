@@ -1,13 +1,21 @@
+import { useSelector } from 'react-redux';
 import { ItemMenu } from '../ItemMenu/ItemMenu';
 
 import styles from './RestaurantActiveMenu.module.css';
+import { selectRestaurantById } from '../../redux/restaurants';
+import { useParams } from 'react-router-dom';
 
-export const RestaurantActiveMenu = ({ menuIds }) => {
+export const RestaurantActiveMenu = () => {
+  const { restaurantId } = useParams();
+  const restaurant = useSelector((state) =>
+    selectRestaurantById(state, restaurantId)
+  );
+
   return (
     <>
       <h3 className={styles.menuTitle}>Меню</h3>
       <ul className={styles.resturantMenuList}>
-        {menuIds.map((id) => (
+        {restaurant.menu.map((id) => (
           <ItemMenu key={id} type='menu' id={id} />
         ))}
       </ul>

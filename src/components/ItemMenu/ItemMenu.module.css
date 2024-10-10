@@ -9,4 +9,7 @@
 
 .listItemText {
   font-size: 18px;
+  color: black !important;
+  border-color: black !important;
+  text-decoration: none;
 }
