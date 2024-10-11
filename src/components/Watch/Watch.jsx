@@ -4,7 +4,8 @@ import { useWatch } from '../../hooks/useWatch';
 import styles from './Watch.module.css';
 
 export const Watch = () => {
-  const [time, setTime] = useState(0);
+  const date = new Date().toLocaleTimeString();
+  const [time, setTime] = useState(date);
   useWatch(setTime);
 
   return (
