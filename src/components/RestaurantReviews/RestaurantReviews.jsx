@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { ItemReview } from '../ItemReview/ItemReview';
-import styles from './RestaurantActiveReviews.module.css';
+import styles from './RestaurantReviews.module.css';
 import { useSelector } from 'react-redux';
 import { selectRestaurantById } from '../../redux/restaurants';
 import { useUser } from '../../context/userContext/useUser';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
 
-export const RestaurantActiveReviews = () => {
+export const RestaurantReviews = () => {
   const { user } = useUser();
   const { restaurantId } = useParams();
   const restaurant = useSelector((state) =>

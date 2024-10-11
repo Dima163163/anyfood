@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import { ItemMenu } from '../ItemMenu/ItemMenu';
 
-import styles from './RestaurantActiveMenu.module.css';
+import styles from './RestaurantMenu.module.css';
 import { selectRestaurantById } from '../../redux/restaurants';
 import { useParams } from 'react-router-dom';
 
-export const RestaurantActiveMenu = () => {
+export const RestaurantMenu = () => {
   const { restaurantId } = useParams();
   const restaurant = useSelector((state) =>
     selectRestaurantById(state, restaurantId)

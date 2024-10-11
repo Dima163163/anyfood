@@ -9,8 +9,8 @@ import { Provider } from 'react-redux';
 import { store } from '../../redux/store';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RestaurantPage } from '../../pages/RestaurantPage/RestaurantPage';
-import { RestaurantActiveMenu } from '../RestaurantActiveMenu/RestaurantActiveMenu';
-import { RestaurantActiveReviews } from '../RestaurantActiveReviews/RestaurantActiveReviews';
+import { RestaurantMenu } from '../RestaurantMenu/RestaurantMenu';
+import { RestaurantReviews } from '../RestaurantReviews/RestaurantReviews';
 import { HomePage } from '../../pages/HomePage/HomePage';
 import { DishPage } from '../../pages/DishPage/DishPage';
 
@@ -29,11 +29,11 @@ const router = createBrowserRouter([
             children: [
               {
                 path: 'menu',
-                element: <RestaurantActiveMenu />
+                element: <RestaurantMenu />
               },
               {
                 path: 'reviews',
-                element: <RestaurantActiveReviews />
+                element: <RestaurantReviews />
               }
             ]
           }
@@ -60,11 +60,7 @@ export const App = () => {
     <Provider store={store}>
       <ThemeContextProvider>
         <UserContextProvider>
-          <RouterProvider router={router}>
-            <Layout>
-              <RestaurantsPage />
-            </Layout>
-          </RouterProvider>
+          <RouterProvider router={router}></RouterProvider>
         </UserContextProvider>
       </ThemeContextProvider>
     </Provider>
