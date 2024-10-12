@@ -60,7 +60,7 @@ export const App = () => {
     <Provider store={store}>
       <ThemeContextProvider>
         <UserContextProvider>
-          <RouterProvider router={router}></RouterProvider>
+          <RouterProvider router={router} />
         </UserContextProvider>
       </ThemeContextProvider>
     </Provider>
