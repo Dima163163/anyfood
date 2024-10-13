@@ -6,10 +6,6 @@
   font-size: 14px;
 }
 
-.default {
-  font-size: 14px;
-}
-
 .xl {
   font-size: 18px;
 }
@@ -35,7 +31,7 @@
 
 .notBorder.dark {
   border-bottom: 2px solid white;
-  color: white;;
+  color: white;
 }
 
 .notBorder:disabled.light {

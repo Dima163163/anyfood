@@ -1,0 +1,11 @@
+.dishPage {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.dishIngredients {
+  font-size: 18px;
+}
