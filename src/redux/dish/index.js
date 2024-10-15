@@ -1,30 +1,30 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { FULFILLED, IDLE, PENDING, REJECTED } from '../../constants/constants';
-import { getDishes } from './getDishes';
+import { getDish } from './getDish';
 
 const entityAdapter = createEntityAdapter();
 
-export const dishesSlice = createSlice({
-  name: 'dishes',
+export const dishSlice = createSlice({
+  name: 'dish',
   initialState: entityAdapter.getInitialState({ requestStatus: IDLE }),
   selectors: {
-    selectDishesIds: (state) => state.ids,
+    selectDisheId: (state) => state.ids[0],
     selectDisheById: (state, id) => state.entities[id],
-    selectDishesRequestStatus: (state) => state.requestStatus
+    selectDisheRequestStatus: (state) => state.requestStatus
   },
   extraReducers: (builder) =>
     builder
-      .addCase(getDishes.pending, (state) => {
+      .addCase(getDish.pending, (state) => {
         state.requestStatus = PENDING;
       })
-      .addCase(getDishes.fulfilled, (state, { payload }) => {
-        entityAdapter.setAll(state, payload);
+      .addCase(getDish.fulfilled, (state, { payload }) => {
+        entityAdapter.setAll(state, [payload]);
         state.requestStatus = FULFILLED;
       })
-      .addCase(getDishes.rejected, (state) => {
+      .addCase(getDish.rejected, (state) => {
         state.requestStatus = REJECTED;
       })
 });
 
-export const { selectDishesIds, selectDisheById, selectDishesRequestStatus } =
-  dishesSlice.selectors;
+export const { selectDisheId, selectDisheById, selectDisheRequestStatus } =
+  dishSlice.selectors;

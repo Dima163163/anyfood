@@ -41,3 +41,8 @@
   border-bottom: 2px solid white;
   color: white;
 }
+
+.restaurantLinkActive {
+  color: yellowgreen !important;
+  border-bottom: 2px solid yellowgreen !important;
+}

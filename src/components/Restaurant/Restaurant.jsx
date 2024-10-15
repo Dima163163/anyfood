@@ -25,21 +25,25 @@ export const Restaurant = ({ name }) => {
         <h2 className={styles.restaurantTitle}>{name}</h2>
         <div className={styles.tabsWrapper}>
           <NavLink
-            className={classnames(
-              styles.navTab,
-              ({ isActive }) => isActive && 'active',
-              theme === 'light' ? styles.light : styles.dark
-            )}
+            className={({ isActive }) =>
+              classnames(
+                styles.navTab,
+                theme === 'light' ? styles.light : styles.dark,
+                isActive && styles.restaurantLinkActive
+              )
+            }
             to='menu'
           >
             Меню
           </NavLink>
           <NavLink
-            className={classnames(
-              styles.navTab,
-              ({ isActive }) => isActive && 'active',
-              theme === 'light' ? styles.light : styles.dark
-            )}
+            className={({ isActive }) =>
+              classnames(
+                styles.navTab,
+                theme === 'light' ? styles.light : styles.dark,
+                isActive && styles.restaurantLinkActive
+              )
+            }
             to='reviews'
           >
             Отзывы

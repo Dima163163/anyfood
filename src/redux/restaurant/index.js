@@ -1,33 +1,33 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { getRestaurants } from './getRestaurants';
 import { FULFILLED, IDLE, PENDING, REJECTED } from '../../constants/constants';
+import { getRestaurant } from './getRestaurant';
 
 const entityAdapter = createEntityAdapter();
 
-export const restaurantsSlice = createSlice({
-  name: 'restaurants',
+export const restaurantSlice = createSlice({
+  name: 'restaurant',
   initialState: entityAdapter.getInitialState({ requestStatus: IDLE }),
   selectors: {
-    selectRestaurantsIds: (state) => state.ids,
     selectRestaurantById: (state, id) => state.entities[id],
-    selectRestaurantsRequestStatus: (state) => state.requestStatus
+    selectRestaurantId: (state) => state.ids[0],
+    selectRestaurantRequestStatus: (state) => state.requestStatus
   },
   extraReducers: (builder) =>
     builder
-      .addCase(getRestaurants.pending, (state) => {
+      .addCase(getRestaurant.pending, (state) => {
         state.requestStatus = PENDING;
       })
-      .addCase(getRestaurants.fulfilled, (state, { payload }) => {
-        entityAdapter.setAll(state, payload);
+      .addCase(getRestaurant.fulfilled, (state, { payload }) => {
+        entityAdapter.setAll(state, [payload]);
         state.requestStatus = FULFILLED;
       })
-      .addCase(getRestaurants.rejected, (state) => {
+      .addCase(getRestaurant.rejected, (state) => {
         state.requestStatus = REJECTED;
       })
 });
 
 export const {
-  selectRestaurantsIds,
   selectRestaurantById,
-  selectRestaurantsRequestStatus
-} = restaurantsSlice.selectors;
+  selectRestaurantId,
+  selectRestaurantRequestStatus
+} = restaurantSlice.selectors;

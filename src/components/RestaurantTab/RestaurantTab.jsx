@@ -16,11 +16,13 @@ export const RestaurantTab = ({ id }) => {
   return (
     <NavLink
       to={id}
-      className={classnames(
-        styles.restaurantTab,
-        ({ isActive }) => isActive && 'active',
-        theme === 'light' ? styles.light : styles.dark
-      )}
+      className={({ isActive }) =>
+        classnames(
+          styles.restaurantTab,
+          theme === 'light' ? styles.light : styles.dark,
+          isActive && styles.activeLink
+        )
+      }
     >
       {restaurant.name}
     </NavLink>

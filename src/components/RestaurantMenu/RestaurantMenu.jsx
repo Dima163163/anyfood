@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { ItemMenu } from '../ItemMenu/ItemMenu';
 
 import styles from './RestaurantMenu.module.css';
-import { selectRestaurantById } from '../../redux/restaurants';
+import { selectRestaurantById } from '../../redux/restaurant';
 import { useParams } from 'react-router-dom';
 
 export const RestaurantMenu = () => {
