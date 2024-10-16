@@ -1,14 +1,12 @@
 import { Container } from '../Container/Container';
-import { NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 
 import styles from './Restaurant.module.css';
-import { useTheme } from '../../context/themeContext/useTheme';
-import classnames from 'classnames';
 import { useEffect } from 'react';
+import { RouterLink } from '../RouterLink/RouterLink';
 
 export const Restaurant = ({ name }) => {
   const { restaurantId } = useParams();
-  const { theme } = useTheme();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,30 +22,8 @@ export const Restaurant = ({ name }) => {
       <div className={styles.restautantWrapper}>
         <h2 className={styles.restaurantTitle}>{name}</h2>
         <div className={styles.tabsWrapper}>
-          <NavLink
-            className={({ isActive }) =>
-              classnames(
-                styles.navTab,
-                theme === 'light' ? styles.light : styles.dark,
-                isActive && styles.restaurantLinkActive
-              )
-            }
-            to='menu'
-          >
-            Меню
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              classnames(
-                styles.navTab,
-                theme === 'light' ? styles.light : styles.dark,
-                isActive && styles.restaurantLinkActive
-              )
-            }
-            to='reviews'
-          >
-            Отзывы
-          </NavLink>
+          <RouterLink to='menu' text='Меню' type='link' />
+          <RouterLink to='reviews' text='Отзывы' type='link' />
         </div>
         <Outlet />
       </div>

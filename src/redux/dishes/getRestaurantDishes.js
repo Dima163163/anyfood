@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { selectDishesIds } from '.';
 
-export const getDishes = createAsyncThunk(
-  'dishes/getDishes',
-  async (id, { rejectWithValue }) => {
+export const getRestaurantDishes = createAsyncThunk(
+  'dishes/getRestaurantDishes',
+  async (restaurantId, { rejectWithValue }) => {
     const response = await fetch(
-      `http://localhost:3001/api/dishes?restaurantId=${id}`
+      `http://localhost:3001/api/dishes?restaurantId=${restaurantId}`
     );
 
     const result = await response.json();

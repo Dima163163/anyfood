@@ -1,4 +1,4 @@
-.restaurantTab {
+.navTab {
   border: none;
   padding: 0 0 2px 0;
   background-color: transparent;
@@ -9,12 +9,22 @@
   text-decoration: none;
 }
 
-.restaurantTab.light {
+.navTab.light {
   border-bottom: 2px solid black;
   color: black;
 }
 
-.restaurantTab.dark {
+.navTab.dark {
   border-bottom: 2px solid white;
   color: white;
+}
+
+.navTab.linkActive {
+  color: yellowgreen;
+  border-bottom: 2px solid yellowgreen;
+}
+
+.navTab.tabActive {
+  color: orangered;
+  border-bottom: 2px solid orangered;
 }
