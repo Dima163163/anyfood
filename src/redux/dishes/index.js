@@ -21,28 +21,22 @@ export const dishesSlice = createSlice({
     builder
       .addCase(getRestaurantDishes.pending, (state) => {
         state.requestStatus = PENDING;
-        state.requestStatusOneDish = PENDING;
       })
       .addCase(getRestaurantDishes.fulfilled, (state, { payload }) => {
         entityAdapter.setMany(state, payload);
         state.requestStatus = FULFILLED;
-        state.requestStatusOneDish = FULFILLED;
       })
       .addCase(getRestaurantDishes.rejected, (state) => {
         state.requestStatus = REJECTED;
-        state.requestStatusOneDish = REJECTED;
       })
       .addCase(getRestaurantOneDish.pending, (state) => {
-        state.requestStatus = PENDING;
         state.requestStatusOneDish = PENDING;
       })
       .addCase(getRestaurantOneDish.fulfilled, (state, { payload }) => {
         entityAdapter.setOne(state, payload);
-        state.requestStatus = FULFILLED;
         state.requestStatusOneDish = FULFILLED;
       })
       .addCase(getRestaurantOneDish.rejected, (state) => {
-        state.requestStatus = PENDING;
         state.requestStatusOneDish = REJECTED;
       })
 });

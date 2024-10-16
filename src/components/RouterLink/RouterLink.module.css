@@ -15,8 +15,8 @@
 }
 
 .navTab.dark {
-  border-bottom: 2px solid white;
-  color: white;
+  border-bottom: 2px solid darkblue;
+  color: darkblue;
 }
 
 .navTab.linkActive {
