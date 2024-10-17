@@ -1,10 +1,28 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './ItemMenu.module.css';
-import { selectDisheById } from '../../redux/dishes';
-import { NavLink } from 'react-router-dom';
+import {
+  selectDisheById,
+  selectOneDisheRequestStatus
+} from '../../redux/dishes';
+import { useEffect } from 'react';
+import { IDLE, PENDING } from '../../constants/constants';
+import { Loader } from '../Loader/Loader';
+import { RouterLink } from '../RouterLink/RouterLink';
+import { getRestaurantOneDish } from '../../redux/dishes/getRestaurantOneDish';
 
 export const ItemMenu = ({ id }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getRestaurantOneDish(id));
+  }, [dispatch, id]);
+
   const dishe = useSelector((state) => selectDisheById(state, id));
+  const requestStatus = useSelector(selectOneDisheRequestStatus);
+
+  if (requestStatus === IDLE || requestStatus === PENDING) {
+    return <Loader />;
+  }
 
   if (!dishe) {
     return null;
@@ -12,9 +30,7 @@ export const ItemMenu = ({ id }) => {
 
   return (
     <li className={styles.listItem}>
-      <NavLink to={`/dish/${id}`} className={styles.listItemText}>
-        {dishe.name}
-      </NavLink>
+      <RouterLink to={`/dish/${id}`} text={dishe.name} />
     </li>
   );
 };

@@ -1,0 +1,30 @@
+.navTab {
+  border: none;
+  padding: 0 0 2px 0;
+  background-color: transparent;
+  border-bottom: 2px solid black;
+  color: black;
+  border-radius: none;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.navTab.light {
+  border-bottom: 2px solid black;
+  color: black;
+}
+
+.navTab.dark {
+  border-bottom: 2px solid darkblue;
+  color: darkblue;
+}
+
+.navTab.linkActive {
+  color: yellowgreen;
+  border-bottom: 2px solid yellowgreen;
+}
+
+.navTab.tabActive {
+  color: orangered;
+  border-bottom: 2px solid orangered;
+}
