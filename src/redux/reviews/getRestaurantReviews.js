@@ -3,9 +3,9 @@ import { selectReviewsById } from '.';
 
 export const getRestaurantReview = createAsyncThunk(
   'reviews/getRestaurantReviews',
-  async (restaurantId, { rejectWithValue }) => {
+  async (rewiewId, { rejectWithValue }) => {
     const response = await fetch(
-      `http://localhost:3001/api/reviews?restaurantId=${restaurantId}`
+      `http://localhost:3001/api/reviews?restaurantId=${rewiewId}`
     );
 
     const result = await response.json();
@@ -18,8 +18,8 @@ export const getRestaurantReview = createAsyncThunk(
     return result;
   },
   {
-    condition: (restaurantId, { getState }) => {
-      return selectReviewsById(getState(), restaurantId);
+    condition: (rewiewId, { getState }) => {
+      return selectReviewsById(getState(), rewiewId);
     }
   }
 );

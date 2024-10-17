@@ -3,9 +3,9 @@ import { selectDisheById } from '.';
 
 export const getRestaurantDishes = createAsyncThunk(
   'dishes/getRestaurantDishes',
-  async (dishId, { rejectWithValue }) => {
+  async (restaurantId, { rejectWithValue }) => {
     const response = await fetch(
-      `http://localhost:3001/api/dishes?restaurantId=${dishId}`
+      `http://localhost:3001/api/dishes?restaurantId=${restaurantId}`
     );
 
     const result = await response.json();
@@ -18,8 +18,8 @@ export const getRestaurantDishes = createAsyncThunk(
     return result;
   },
   {
-    condition: (dishId, { getState }) => {
-      return selectDisheById(getState(), dishId);
+    condition: (restaurantId, { getState }) => {
+      return selectDisheById(getState(), restaurantId);
     }
   }
 );
