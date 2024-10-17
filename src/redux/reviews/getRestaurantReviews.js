@@ -3,9 +3,9 @@ import { selectReviews } from '.';
 
 export const getRestaurantReview = createAsyncThunk(
   'reviews/getRestaurantReviews',
-  async (reviewId, { rejectWithValue }) => {
+  async (restaurantId, { rejectWithValue }) => {
     const response = await fetch(
-      `http://localhost:3001/api/reviews?restaurantId=${reviewId}`
+      `http://localhost:3001/api/reviews?restaurantId=${restaurantId}`
     );
 
     const result = await response.json();
