@@ -1,34 +1,50 @@
 import { useParams } from 'react-router-dom';
 import { ItemReview } from '../ItemReview/ItemReview';
 import styles from './RestaurantReviews.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectRestaurantById } from '../../redux/restaurants';
 import { useUser } from '../../context/userContext/useUser';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
-import { useEffect } from 'react';
-import { getRestaurantReviews } from '../../redux/reviews/getRestaurantReviews';
+import { Loader } from '../Loader/Loader';
+import {
+  useGetReviewsByRestaurantIdQuery
+} from '../../redux/services/api/api';
 
 export const RestaurantReviews = () => {
-  const dispatch = useDispatch();
   const { user } = useUser();
+  const { userName } = user;
   const { restaurantId } = useParams();
-  const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restaurantId)
-  );
 
-  useEffect(() => {
-    dispatch(getRestaurantReviews(restaurantId));
-  }, [dispatch, restaurantId]);
+  const { data, isLoading, isError } =
+    useGetReviewsByRestaurantIdQuery(restaurantId);
+
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <div>Error</div>;
+  }
+
+  if (!data?.length) {
+    return null;
+  }
 
   return (
     <>
       <h3 className={styles.reviesTitle}>Отзывы</h3>
       <ul className={styles.reviewsList}>
-        {restaurant.reviews.map((id) => (
-          <ItemReview key={id} type='review' id={id} />
+        {data.map(({ id, text, userId, rating }) => (
+          <ItemReview
+            key={id}
+            type='review'
+            text={text}
+            id={id}
+            userId={userId}
+            rating={rating}
+          />
         ))}
       </ul>
-      {user && <ReviewForm />}
+      {userName && <ReviewForm restaurantId={restaurantId} />}
     </>
   );
 };

@@ -28,3 +28,18 @@
   color: orangered;
   border-bottom: 2px solid orangered;
 }
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.btn.light {
+  border: 2px solid black;
+  color: black;
+}
+
+.btn.dark {
+  border: 2px solid darkblue;
+  color: darkblue;
+}
