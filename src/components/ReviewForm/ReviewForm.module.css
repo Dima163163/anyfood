@@ -22,10 +22,15 @@
   border: 2px solid black;
   background-color: white;
   padding: 10px 20px;
-  border-radius: 10px
+  border-radius: 10px;
 }
 
 .clearBtn:active {
   background-color: gray;
   color: white;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 10px;
 }
