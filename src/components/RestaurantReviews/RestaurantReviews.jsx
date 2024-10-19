@@ -5,7 +5,8 @@ import { useUser } from '../../context/userContext/useUser';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
 import { Loader } from '../Loader/Loader';
 import {
-  useGetReviewsByRestaurantIdQuery
+  useGetReviewsByRestaurantIdQuery,
+  useGetUsersQuery
 } from '../../redux/services/api/api';
 
 export const RestaurantReviews = () => {
@@ -16,16 +17,21 @@ export const RestaurantReviews = () => {
   const { data, isLoading, isError } =
     useGetReviewsByRestaurantIdQuery(restaurantId);
 
+  const {
+    data: users,
+    isLoading: loading,
+    isError: error
+  } = useGetUsersQuery();
 
-  if (isLoading) {
+  if (isLoading || loading) {
     return <Loader />;
   }
 
-  if (isError) {
+  if (isError || error) {
     return <div>Error</div>;
   }
 
-  if (!data?.length) {
+  if (!data?.length || !users?.length) {
     return null;
   }
 
@@ -41,6 +47,7 @@ export const RestaurantReviews = () => {
             id={id}
             userId={userId}
             rating={rating}
+            users={users}
           />
         ))}
       </ul>
