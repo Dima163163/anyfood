@@ -29,10 +29,9 @@ export const apiSlice = createApi({
       ]
     }),
     editReview: builder.mutation({
-      query: ({ reviewId, review }) => ({
+      query: ({ reviewId}) => ({
         method: 'PATCH',
         url: `/review/${reviewId}`,
-        body: review,
       })
     })
   })
