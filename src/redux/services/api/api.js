@@ -29,10 +29,14 @@ export const apiSlice = createApi({
       ]
     }),
     editReview: builder.mutation({
-      query: ({ reviewId}) => ({
+      query: ({ reviewId, review}) => ({
         method: 'PATCH',
+        body: review,
         url: `/review/${reviewId}`,
-      })
+      }),
+      invalidatesTags: ({ reviewId }) => [
+        { type: 'Reviews', id: reviewId }
+      ]
     })
   })
 });
