@@ -1,19 +1,21 @@
 import { useState } from 'react';
 import Button from '../Button/Button';
+import { ReviewForm } from '../ReviewForm/ReviewForm';
 
-export const ItemReview = ({ id, text, userId, rating, users, setReviewId, setReviewItem }) => {
-  const [isActive, setIsActive] = useState(false);
+export const ItemReview = ({ id, text, userId, rating, users }) => {
+  const [isEdit, setIsEdit] = useState(false);
+  const [reviewItem, setReviewItem] = useState(null);
   const user = users.find((user) => user.id === userId);
+  
 
   return (
     <li>
       <p>
-        {user.name}: {text}. Рейтинг: {rating}
+        {userId}: {text}. Рейтинг: {rating}
       </p>
       {
-      !isActive ? <Button
+      !isEdit ? <Button
         onClick={() => {
-          setReviewId(id);
           setReviewItem({
             id,
             userId,
@@ -21,21 +23,21 @@ export const ItemReview = ({ id, text, userId, rating, users, setReviewId, setRe
             rating,
             userName: user.name,
           })
-          setIsActive(true)
+          setIsEdit(true)
         }}
         text='Редактировать'
         styleViewVariant='border'
         colorViewVariant='darkBtn'
       /> : <Button
         onClick={() => {
-          setReviewId(false);
-          setIsActive(false)
+          setIsEdit(false)
         }}
         text='Отменить редактирование'
         styleViewVariant='border'
         colorViewVariant='darkBtn'
       />
       }
+      {isEdit && <ReviewForm reviewId={id} isEdit={isEdit} reviewItem={reviewItem} />}
     </li>
   );
 };

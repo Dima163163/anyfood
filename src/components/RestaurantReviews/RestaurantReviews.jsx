@@ -8,15 +8,11 @@ import {
   useGetReviewsByRestaurantIdQuery,
   useGetUsersQuery
 } from '../../redux/services/api/api';
-import { useState } from 'react';
-import { ReviewFormEdit } from '../ReviewFormEdit/ReviewFormEdit';
 
 export const RestaurantReviews = () => {
   const { user } = useUser();
   const { userName } = user;
   const { restaurantId } = useParams();
-  const [reviewId, setReviewId] = useState(false);
-  const [reviewItem, setReviewItem] = useState(null);
   const { data, isLoading, isError } =
     useGetReviewsByRestaurantIdQuery(restaurantId);
 
@@ -51,13 +47,10 @@ export const RestaurantReviews = () => {
             userId={userId}
             rating={rating}
             users={users}
-            setReviewId={setReviewId}
-            setReviewItem={setReviewItem}
           />
         ))}
       </ul>
-      {userName && !reviewId &&  <ReviewForm restaurantId={restaurantId} />}
-      {userName && reviewId && <ReviewFormEdit reviewId={reviewId} reviewItem={reviewItem}/> }
+      {userName &&  <ReviewForm restaurantId={restaurantId} />}
     </>
   );
 };

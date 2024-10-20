@@ -3,11 +3,19 @@ import { useForm } from './useForm';
 
 import styles from './ReviewForm.module.css';
 import Button from '../Button/Button';
-import { useAddReviewMutation } from '../../redux/services/api/api';
-import { useContext } from 'react';
+import {
+  useAddReviewMutation,
+  useEditReviewMutation
+} from '../../redux/services/api/api';
+import { useContext, useEffect } from 'react';
 import { UserContext } from '../../context/userContext/UserContext';
 
-export const ReviewForm = ({ restaurantId }) => {
+export const ReviewForm = ({
+  restaurantId = '',
+  isEdit = false,
+  reviewId,
+  reviewItem = {}
+}) => {
   const {
     name,
     text,
@@ -16,13 +24,22 @@ export const ReviewForm = ({ restaurantId }) => {
     setText,
     setIncrementRating,
     setDecrementRating,
+    setStartRating,
     setClear
   } = useForm();
   const { user } = useContext(UserContext);
-
   const { userId } = user;
 
   const [addReview] = useAddReviewMutation();
+  const [editReview] = useEditReviewMutation();
+
+  useEffect(() => {
+    if (isEdit) {
+      setName(reviewItem.userName);
+      setText(reviewItem.text);
+      setStartRating(reviewItem.rating);
+    }
+  }, []);
 
   const addRating = () => {
     if (rating < 5) {
@@ -36,6 +53,28 @@ export const ReviewForm = ({ restaurantId }) => {
     }
   };
 
+  const onSubmit = () => {
+    if (isEdit) {
+      editReview({
+        reviewId,
+        review: {
+          userId,
+          text,
+          rating
+        }
+      });
+    } else {
+      addReview({
+        restaurantId,
+        review: {
+          userId,
+          text,
+          rating
+        }
+      });
+    }
+  };
+
   return (
     <form
       className={styles.reviewForm}
@@ -43,13 +82,15 @@ export const ReviewForm = ({ restaurantId }) => {
         e.preventDefault();
       }}
     >
-      <h3 className={styles.formTitle}>Нaписать отзыв</h3>
+      <h3 className={styles.formTitle}>
+        {isEdit ? 'Редактировать' : 'Нaписать отзыв'}
+      </h3>
       <div className={styles.inputWrapper}>
         <label>Имя</label>
         <input
           type='text'
           name='name'
-          value={name}
+          defaultValue={name}
           onChange={(e) => setName(e.target.value)}
         />
       </div>
@@ -58,7 +99,7 @@ export const ReviewForm = ({ restaurantId }) => {
         <input
           type='text'
           name='review'
-          value={text}
+          defaultValue={text}
           onChange={(e) => setText(e.target.value)}
         />
       </div>
@@ -81,16 +122,7 @@ export const ReviewForm = ({ restaurantId }) => {
           colorViewVariant='darkBtn'
         />
         <Button
-          onClick={() =>
-            addReview({
-              restaurantId,
-              review: {
-                userId,
-                text,
-                rating
-              }
-            })
-          }
+          onClick={onSubmit}
           text='Отпарвить'
           styleViewVariant='border'
           colorViewVariant='darkBtn'
