@@ -11,7 +11,7 @@ export const ItemReview = ({ id, text, userId, rating, users }) => {
   return (
     <li>
       <p>
-        {userId}: {text}. Рейтинг: {rating}
+        {user ? user.name : 'Аноним'}: {text}. Рейтинг: {rating}
       </p>
       {
       !isEdit ? <Button
@@ -21,7 +21,7 @@ export const ItemReview = ({ id, text, userId, rating, users }) => {
             userId,
             text,
             rating,
-            userName: user.name,
+            userName: user ? user.name : '',
           })
           setIsEdit(true)
         }}
