@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import Button from '../Button/Button';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
+import { useUser } from '../../context/userContext/useUser';
 
 export const ItemReview = ({ id, text, userId, rating, users }) => {
+  const {user: auth} = useUser();
+  const {userName} = auth;
   const [isEdit, setIsEdit] = useState(false);
   const [reviewItem, setReviewItem] = useState(null);
   const user = users.find((user) => user.id === userId);
@@ -11,7 +14,7 @@ export const ItemReview = ({ id, text, userId, rating, users }) => {
   return (
     <li>
       <p>
-        {user ? user.name : 'Аноним'}: {text}. Рейтинг: {rating}
+        {user ? user.name : userName}: {text}. Рейтинг: {rating}
       </p>
       {
       !isEdit ? <Button
@@ -21,7 +24,7 @@ export const ItemReview = ({ id, text, userId, rating, users }) => {
             userId,
             text,
             rating,
-            userName: user ? user.name : '',
+            userName: user ? user.name : userName,
           })
           setIsEdit(true)
         }}
