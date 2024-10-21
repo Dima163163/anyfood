@@ -14,7 +14,7 @@ export const ReviewForm = ({
   restaurantId = '',
   isEdit = false,
   reviewId,
-  reviewItem = {}
+  reviewItem
 }) => {
   const {
     name,
