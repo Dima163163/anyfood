@@ -1,51 +1,37 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useUser } from '../../context/userContext/useUser';
-import { useEffect } from 'react';
-import { IDLE, PENDING, REJECTED } from '../../constants/constants';
-import { Loader } from '../Loader/Loader';
-import styles from './DishInfo.module.css';
+import { useGetDishByIdQuery } from '../../redux/services/api/api';
 import { DishCounter } from '../DishCounter/DishCounter';
+import { Loader } from '../Loader/Loader';
+import { RouterLink } from '../RouterLink/RouterLink';
 
-import { getRestaurantOneDish } from '../../redux/dishes/getRestaurantOneDish';
-import {
-  selectDisheById,
-  selectOneDisheRequestStatus
-} from '../../redux/dishes';
+import styles from './DishInfo.module.css';
 
 export const DishInfo = ({ dishId }) => {
-  const dispatch = useDispatch();
   const { user } = useUser();
+  const { userName } = user;
+  const { data, isLoading, isError } = useGetDishByIdQuery(dishId);
 
-  useEffect(() => {
-    dispatch(getRestaurantOneDish(dishId));
-  }, [dispatch, dishId]);
-
-  const dish = useSelector((state) => selectDisheById(state, dishId));
-
-  const requestStatus = useSelector(selectOneDisheRequestStatus);
-
-  if (requestStatus === IDLE || requestStatus === PENDING) {
+  if (isLoading) {
     return <Loader />;
   }
 
-  if (requestStatus === REJECTED) {
+  if (isError) {
     return <div>Error</div>;
   }
 
-  const { ingredients, name, price } = dish;
-
-  if (!name) {
+  if (!data.name) {
     return null;
   }
 
   return (
     <>
-      <h2 className={styles.dishTitle}>{name}</h2>
+      <RouterLink text='Вернуться' type='btn' to={'/restaurant'} />
+      <h2 className={styles.dishTitle}>{data.name}</h2>
       <p className={styles.dishIngredients}>
-        Ингредиенты: {ingredients.join(', ')}
+        Ингредиенты: {data.ingredients.join(', ')}
       </p>
-      <p>Цена: ${price} USD</p>
-      {user && <DishCounter id={dishId} />}
+      <p>Цена: ${data.price} USD</p>
+      {userName && <DishCounter id={dishId} />}
     </>
   );
 };

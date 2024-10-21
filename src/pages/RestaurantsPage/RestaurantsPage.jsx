@@ -2,52 +2,39 @@ import { Container } from '../../components/Container/Container';
 import { RestaurantsTabsWrapper } from '../../components/RestaurantsTabsWrapper/RestaurantsTabsWrapper';
 import { RestaurantTab } from '../../components/RestaurantTab/RestaurantTab';
 import { ResturantsTabsSection } from '../../components/ResturantsTabsSection/ResturantsTabsSection';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectRestaurantsIds,
-  selectRestaurantsRequestStatus
-} from '../../redux/restaurants';
 import { Outlet } from 'react-router-dom';
+import { Loader } from '../../components/Loader/Loader';
+import { useGetRestaurantsQuery } from '../../redux/services/api/api';
 
 import styles from './RestaurantsPage.module.css';
-import { useEffect } from 'react';
-import { getRestaurants } from '../../redux/restaurants/getRestaurants';
-import { IDLE, PENDING, REJECTED } from '../../constants/constants';
-import { Loader } from '../../components/Loader/Loader';
-import { getUsers } from '../../redux/users/getUsers';
 
 export const RestaurantsPage = () => {
-  const dispatch = useDispatch();
+  const { data, isLoading, isError } = useGetRestaurantsQuery(undefined);
 
-  useEffect(() => {
-    dispatch(getUsers());
-    dispatch(getRestaurants());
-  }, [dispatch]);
-
-  const restaurantsIds = useSelector(selectRestaurantsIds);
-  const requestStatus = useSelector(selectRestaurantsRequestStatus);
-
-  if (requestStatus === IDLE || requestStatus === PENDING) {
+  if (isLoading) {
     return <Loader />;
   }
 
-  if (requestStatus === REJECTED) {
+  if (isError) {
     return <div>Error</div>;
   }
 
+  if (!data?.length) {
+    return null;
+  }
+
+
   return (
     <main className={styles.restaurantsPage}>
-      {restaurantsIds.length > 0 && (
         <ResturantsTabsSection>
           <Container>
             <RestaurantsTabsWrapper>
-              {restaurantsIds.map((id) => (
-                <RestaurantTab key={id} id={id} />
+              {data.map(({id, name}) => (
+                <RestaurantTab key={id} id={id} name={name} />
               ))}
             </RestaurantsTabsWrapper>
           </Container>
         </ResturantsTabsSection>
-      )}
       <Outlet />
     </main>
   );

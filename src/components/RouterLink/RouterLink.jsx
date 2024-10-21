@@ -12,6 +12,7 @@ export const RouterLink = ({ text, to, type = '' }) => {
       className={({ isActive }) =>
         classNames(
           styles.navTab,
+          type === 'btn' && styles.btn,
           theme === 'light' ? styles.light : styles.dark,
           isActive && type === 'link' ? styles.linkActive : null,
           isActive && type === 'tab' ? styles.tabActive : null

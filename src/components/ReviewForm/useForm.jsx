@@ -45,7 +45,11 @@ const reducer = (state, action) => {
   }
 };
 
-export const useForm = () => {
+export const useForm = ({userName = '', reviewText = '', reviewRating = 1}) => {
+  DEFAULT_FROM_VALUE.name = userName;
+  DEFAULT_FROM_VALUE.text = reviewText;
+  DEFAULT_FROM_VALUE.rating = reviewRating;
+  
   const [form, dispatch] = useReducer(reducer, DEFAULT_FROM_VALUE);
 
   const {name, text, rating} = form;
@@ -61,6 +65,7 @@ export const useForm = () => {
   const setIncrementRating = () => {
     dispatch({type: SET_INCREMENT_RATING_ACTION_TYPE})
   };
+
   const setDecrementRating = () => {
     dispatch({type: SET_DECREMENT_RATING_ACTION_TYPE})
   };
