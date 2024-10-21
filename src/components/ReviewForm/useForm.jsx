@@ -8,7 +8,6 @@ const DEFAULT_FROM_VALUE = {
 
 const SET_NAME_ACTION_TYPE = 'setName';
 const SET_TEXT_ACTION_TYPE = 'setText';
-const SET_START_RATING_ACTION_TYPE = 'setStartRating';
 const SET_INCREMENT_RATING_ACTION_TYPE = 'setIncrementRating';
 const SET_DECREMENT_RATING_ACTION_TYPE = 'setDecrementRating';
 const SET_CLEAR_ACTION_TYPE = 'setClear';
@@ -26,11 +25,6 @@ const reducer = (state, action) => {
       return {
         ...state,
         text: payload
-      };
-    case SET_START_RATING_ACTION_TYPE:
-      return {
-        ...state,
-        rating: payload,
       };
     case SET_INCREMENT_RATING_ACTION_TYPE:
       return {
@@ -51,7 +45,11 @@ const reducer = (state, action) => {
   }
 };
 
-export const useForm = () => {
+export const useForm = ({userName = '', reviewText = '', reviewRating = 1}) => {
+  DEFAULT_FROM_VALUE.name = userName;
+  DEFAULT_FROM_VALUE.text = reviewText;
+  DEFAULT_FROM_VALUE.rating = reviewRating;
+  
   const [form, dispatch] = useReducer(reducer, DEFAULT_FROM_VALUE);
 
   const {name, text, rating} = form;
@@ -62,10 +60,6 @@ export const useForm = () => {
 
   const setText = (value) => {
     dispatch({type: SET_TEXT_ACTION_TYPE, payload: value})
-  };
-
-  const setStartRating = (value) => {
-    dispatch({type: SET_START_RATING_ACTION_TYPE, payload: value})
   };
 
   const setIncrementRating = () => {
@@ -86,7 +80,6 @@ export const useForm = () => {
     rating,
     setName,
     setText,
-    setStartRating,
     setIncrementRating,
     setDecrementRating,
     setClear

@@ -7,7 +7,7 @@ import {
   useAddReviewMutation,
   useEditReviewMutation
 } from '../../redux/services/api/api';
-import { useContext, useEffect } from 'react';
+import { useContext} from 'react';
 import { UserContext } from '../../context/userContext/UserContext';
 
 export const ReviewForm = ({
@@ -24,22 +24,17 @@ export const ReviewForm = ({
     setText,
     setIncrementRating,
     setDecrementRating,
-    setStartRating,
     setClear
-  } = useForm();
+  } = useForm({
+    userName: reviewItem?.userName,
+    reviewText: reviewItem?.text,
+    reviewRating: reviewItem?.rating
+  });
   const { user } = useContext(UserContext);
   const { userId } = user;
 
   const [addReview] = useAddReviewMutation();
   const [editReview] = useEditReviewMutation();
-
-  useEffect(() => {
-    if (isEdit) {
-      setName(reviewItem.userName);
-      setText(reviewItem.text);
-      setStartRating(reviewItem.rating);
-    }
-  }, []);
 
   const addRating = () => {
     if (rating < 5) {
