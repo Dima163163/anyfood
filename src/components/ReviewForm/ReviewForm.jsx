@@ -90,7 +90,7 @@ export const ReviewForm = ({
         <input
           type='text'
           name='name'
-          defaultValue={name}
+          value={name}
           onChange={(e) => setName(e.target.value)}
         />
       </div>
@@ -99,7 +99,7 @@ export const ReviewForm = ({
         <input
           type='text'
           name='review'
-          defaultValue={text}
+          value={text}
           onChange={(e) => setText(e.target.value)}
         />
       </div>

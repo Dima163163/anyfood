@@ -7,8 +7,14 @@ export const ItemReview = ({ id, text, userId, rating, users }) => {
   const {user: auth} = useUser();
   const {userName} = auth;
   const [isEdit, setIsEdit] = useState(false);
-  const [reviewItem, setReviewItem] = useState(null);
   const user = users.find((user) => user.id === userId);
+  const reviewItem = {
+    id,
+    userId,
+    text,
+    rating,
+    userName: user ? user.name : userName,
+  }
   
 
   return (
@@ -19,13 +25,6 @@ export const ItemReview = ({ id, text, userId, rating, users }) => {
       {
       !isEdit ? <Button
         onClick={() => {
-          setReviewItem({
-            id,
-            userId,
-            text,
-            rating,
-            userName: user ? user.name : userName,
-          })
           setIsEdit(true)
         }}
         text='Редактировать'
