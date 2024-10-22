@@ -1,26 +1,28 @@
+'use client'
 import classNames from 'classnames';
 import { useTheme } from '../../context/themeContext/useTheme';
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
 
 import styles from './RouterLink.module.css';
+import { useParams } from 'next/navigation';
 
-export const RouterLink = ({ text, to, type = '' }) => {
+export const RouterLink = ({ text, to, type = ''}) => {
   const { theme } = useTheme();
-
+  const params = useParams();;
+  const isActive = params[0] === to;
   return (
-    <NavLink
-      className={({ isActive }) =>
+    <Link className={
         classNames(
           styles.navTab,
           type === 'btn' && styles.btn,
           theme === 'light' ? styles.light : styles.dark,
-          isActive && type === 'link' ? styles.linkActive : null,
-          isActive && type === 'tab' ? styles.tabActive : null
+          isActive && type === 'tab' && styles.tabActive,
+          isActive && type === 'link' && styles.linkActive
         )
       }
-      to={to}
+      href={to}
     >
       {text}
-    </NavLink>
+    </Link>
   );
 };

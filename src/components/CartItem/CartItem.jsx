@@ -1,8 +1,8 @@
-import { useSelector } from 'react-redux';
-import { selectDisheById } from '../../redux/dishes';
+import { useGetDishByIdQuery } from '../../redux/services/api/api';
 
 export const CartItem = ({ id, amount }) => {
-  const { name } = useSelector((state) => selectDisheById(state, id)) || {};
+  const { data } = useGetDishByIdQuery(id);
+  const { name } = data || {};
 
   if (!name) {
     return null;
