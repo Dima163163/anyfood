@@ -1,10 +1,7 @@
 'use client';
 
-import { RestaurantPage } from '../../../pages/RestaurantPage/RestaurantPage';
-
+import LayoutRestaurantPage from './layout';
 
 export default function PageRestaurant() {
-  return (
-      <RestaurantPage/>
-  )
+  return <LayoutRestaurantPage/>
 }

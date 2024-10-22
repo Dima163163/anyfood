@@ -1,3 +1,4 @@
+'use client'
 import { useParams } from 'next/navigation';
 import { RestaurantContainer } from '../../components/Restaurant/Restaurant.container';
 

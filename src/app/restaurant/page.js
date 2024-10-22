@@ -1,7 +1,7 @@
-'use client';
+import LayoutRestaurantPage from './layout';
 
-import { RestaurantsPage } from '../../pages/RestaurantsPage/RestaurantsPage';
 
-export default function PageRestaurants({children}) {
-  return <RestaurantsPage>{children}</RestaurantsPage>;
+
+export default function PageRestaurants() {
+  return <LayoutRestaurantPage/>;
 }

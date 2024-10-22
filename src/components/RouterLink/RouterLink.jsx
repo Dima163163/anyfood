@@ -8,8 +8,11 @@ import { useParams } from 'next/navigation';
 
 export const RouterLink = ({ text, to, type = ''}) => {
   const { theme } = useTheme();
-  const params = useParams();;
-  const isActive = params[0] === to;
+  const params = useParams();
+  const link = to.split('/').at(-1)
+  console.log('link: ', link);
+  const {restaurantId} = params;
+  const isActive = restaurantId === link;
   return (
     <Link className={
         classNames(
