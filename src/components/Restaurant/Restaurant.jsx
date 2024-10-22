@@ -9,9 +9,9 @@ export const Restaurant = ({ name, children }) => {
   const params = useParams();
   const { restaurantId } = params;
 
-  // useEffect(() => {
-  //   redirect(`menu`);
-  // }, [restaurantId]);
+  useEffect(() => {
+    redirect(`/restaurants/${restaurantId}/menu`);
+  }, [restaurantId]);
 
   if (!name) {
     return null;
@@ -22,8 +22,8 @@ export const Restaurant = ({ name, children }) => {
       <div className={styles.restautantWrapper}>
         <h2 className={styles.restaurantTitle}>{name}</h2>
         <div className={styles.tabsWrapper}>
-          <RouterLink to='menu' text='Меню' type='link' />
-          <RouterLink to='reviews' text='Отзывы' type='link' />
+          <RouterLink to={`./menu`} text='Меню' type='link' />
+          <RouterLink to={`./reviews`} text='Отзывы' type='link' />
         </div>
         {children}
       </div>
