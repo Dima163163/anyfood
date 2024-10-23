@@ -1,8 +1,3 @@
-
-export default function PageDish({children}) {
-  return (
-    <>  
-      {children}
-    </>
-  );
+export default function PageDish() {
+  return <></>;
 }

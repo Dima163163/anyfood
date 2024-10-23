@@ -1,3 +1,3 @@
-export default function PageRestaurants({children}) {
-  return <>{children}</>
+export default function PageRestaurants() {
+  return <></>;
 }
