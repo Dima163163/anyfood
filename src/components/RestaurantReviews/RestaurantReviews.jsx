@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { ItemReview } from '../ItemReview/ItemReview';
 import styles from './RestaurantReviews.module.css';
 import { useUser } from '../../context/userContext/useUser';
@@ -8,11 +7,13 @@ import {
   useGetReviewsByRestaurantIdQuery,
   useGetUsersQuery
 } from '../../redux/services/api/api';
+import { useParams } from 'next/navigation';
 
 export const RestaurantReviews = () => {
   const { user } = useUser();
   const { userName } = user;
-  const { restaurantId } = useParams();
+  const params = useParams();
+  const { restaurantId } = params;
   const { data, isLoading, isError } =
     useGetReviewsByRestaurantIdQuery(restaurantId);
 
