@@ -1,3 +1,4 @@
+'use client'
 import { useUser } from '../../context/userContext/useUser';
 import { useGetDishByIdQuery } from '../../redux/services/api/api';
 import { DishCounter } from '../DishCounter/DishCounter';
