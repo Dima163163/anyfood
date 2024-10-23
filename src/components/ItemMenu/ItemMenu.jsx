@@ -1,3 +1,4 @@
+'use client'
 import { RouterLink } from '../RouterLink/RouterLink';
 import styles from './ItemMenu.module.css';
 

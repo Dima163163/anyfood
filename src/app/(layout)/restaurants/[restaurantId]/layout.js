@@ -1,3 +1,4 @@
+'use client'
 import { RestaurantPage } from '../../../../pages/RestaurantPage/RestaurantPage';
 
 export default function RestaurantLayout({children}) {
