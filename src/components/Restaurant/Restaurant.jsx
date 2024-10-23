@@ -3,14 +3,14 @@ import { Container } from '../Container/Container';
 import styles from './Restaurant.module.css';
 import { useEffect } from 'react';
 import { RouterLink } from '../RouterLink/RouterLink';
-import { redirect, useParams } from 'next/navigation';
+import { push, useParams } from 'next/navigation';
 
 export const Restaurant = ({ name, children }) => {
   const params = useParams();
   const { restaurantId } = params;
 
   useEffect(() => {
-    redirect(`/restaurants/${restaurantId}/menu`);
+    push(`/menu`);
   }, [restaurantId]);
 
   if (!name) {

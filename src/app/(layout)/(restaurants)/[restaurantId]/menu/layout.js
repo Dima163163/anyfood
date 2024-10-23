@@ -1,4 +1,4 @@
-import { RestaurantPage } from '../../../../pages/RestaurantPage/RestaurantPage';
+import { RestaurantPage } from '../../../../../pages/RestaurantPage/RestaurantPage';
 
 export default function MenuLayout({children}) {
   return (
