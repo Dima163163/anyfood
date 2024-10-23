@@ -25,7 +25,7 @@ export const DishInfo = ({ dishId }) => {
 
   return (
     <>
-      <RouterLink text='Вернуться' type='btn' to={'/restaurant'} />
+      <RouterLink text='Вернуться' type='btn' to={'/restaurants'} id={dishId} />
       <h2 className={styles.dishTitle}>{data.name}</h2>
       <p className={styles.dishIngredients}>
         Ингредиенты: {data.ingredients.join(', ')}

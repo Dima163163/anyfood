@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { Container } from '../Container/Container';
 import styles from './Restaurant.module.css';
 import { useEffect } from 'react';
@@ -9,11 +9,11 @@ import { useRouter } from 'next/navigation';
 export const Restaurant = ({ name, children }) => {
   const params = useParams();
   const { restaurantId } = params;
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
-    router.push(`${restaurantId}/menu`);
-  }, [restaurantId]);
+    router.push(`/restaurants/${restaurantId}/menu`);
+  }, [router, restaurantId]);
 
   if (!name) {
     return null;
@@ -24,8 +24,18 @@ export const Restaurant = ({ name, children }) => {
       <div className={styles.restautantWrapper}>
         <h2 className={styles.restaurantTitle}>{name}</h2>
         <div className={styles.tabsWrapper}>
-          <RouterLink to={`/restaurants/${restaurantId}/menu`} text='Меню' type='link' />
-          <RouterLink to={`/restaurants/${restaurantId}/reviews`} text='Отзывы' type='link' />
+          <RouterLink
+            to={`/restaurants/${restaurantId}/menu`}
+            text='Меню'
+            type='link'
+            linkPath='menu'
+          />
+          <RouterLink
+            to={`/restaurants/${restaurantId}/reviews`}
+            text='Отзывы'
+            type='link'
+            linkPath='reviews'
+          />
         </div>
         {children}
       </div>

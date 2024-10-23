@@ -4,14 +4,21 @@ import { useTheme } from '../../context/themeContext/useTheme';
 import Link from 'next/link';
 
 import styles from './RouterLink.module.css';
-import { useParams } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 
-export const RouterLink = ({ text, to, type = ''}) => {
+export const RouterLink = ({ text, to, type = '', linkPath=''}) => {
   const { theme } = useTheme();
   const params = useParams();
-  const link = to.split('/').at(-1)
   const {restaurantId} = params;
-  const isActive = restaurantId === link;
+  const pathname = usePathname();
+
+  let link = to.split('/').at(-1)
+  let restLink
+  if (linkPath) {
+    restLink = pathname.split('/').at(-1)
+  }
+
+  const isActive = linkPath ? restLink === link : restaurantId === link;
   return (
     <Link className={
         classNames(
