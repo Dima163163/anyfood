@@ -14,3 +14,4 @@ export const DishPage = () => {
     </main>
   );
 };
+export default DishPage;

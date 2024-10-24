@@ -1,5 +1,3 @@
-'use client';
-
 import { ThemeContextProvider } from './context/themeContext/ThemeContextProvider';
 import { UserContextProvider } from './context/userContext/UserContextProvider';
 
