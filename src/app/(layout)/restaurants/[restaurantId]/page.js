@@ -1,3 +1,3 @@
-export default function PageRestaurant() {
+export default function RestaurantPage() {
   return <></>;
 }

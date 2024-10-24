@@ -1,3 +1,3 @@
-export default function PageLayout () {
+export default function LayoutPage () {
   return <></>
 }

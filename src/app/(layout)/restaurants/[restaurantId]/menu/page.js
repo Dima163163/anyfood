@@ -2,6 +2,6 @@
 
 import { RestaurantMenu } from '../../../../../components/RestaurantMenu/RestaurantMenu'
 
-export default function PageMenu() {
+export default function MenuPage() {
   return <RestaurantMenu/>
 }

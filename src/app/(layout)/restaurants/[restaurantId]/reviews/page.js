@@ -2,8 +2,6 @@
 
 import { RestaurantReviews } from '../../../../../components/RestaurantReviews/RestaurantReviews'
 
-
-
-export default function PageReviews() {
+export default function ReviewsPage() {
   return <RestaurantReviews/>
 }
