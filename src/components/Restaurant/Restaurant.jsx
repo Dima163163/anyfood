@@ -28,13 +28,13 @@ export const Restaurant = ({ name, children }) => {
             to={`/restaurants/${restaurantId}/menu`}
             text='Меню'
             type='link'
-            linkPath='menu'
+            linkPath={true}
           />
           <RouterLink
             to={`/restaurants/${restaurantId}/reviews`}
             text='Отзывы'
             type='link'
-            linkPath='reviews'
+            linkPath={true}
           />
         </div>
         {children}

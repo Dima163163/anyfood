@@ -23,10 +23,12 @@ export const RouterLink = ({ text, to, type = '', linkPath=''}) => {
     <Link className={
         classNames(
           styles.navTab,
+          type === 'navLink' && styles.navLink,
           type === 'btn' && styles.btn,
           theme === 'light' ? styles.light : styles.dark,
           isActive && type === 'tab' && styles.tabActive,
-          isActive && type === 'link' && styles.linkActive
+          isActive && type === 'link' && styles.linkActive,
+          isActive && type === 'navLink' && styles.navLinkActive
         )
       }
       href={to}

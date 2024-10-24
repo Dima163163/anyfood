@@ -43,3 +43,23 @@
   border: 2px solid darkblue;
   color: darkblue;
 }
+
+.navTab.light.navLink {
+  color: yellow;
+  border-bottom: 1px solid yellow;
+}
+
+.navTab.light.navLinkActive {
+  color: chartreuse;
+    border-bottom: 1px solid chartreuse;
+}
+
+.navTab.dark.navLink {
+  color: green;
+  border-bottom: 1px solid green;
+}
+
+.navTab.dark.navLinkActive {
+  color: blueviolet;
+    border-bottom: 1px solid blueviolet;
+}
