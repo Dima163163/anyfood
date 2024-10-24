@@ -1,4 +1,4 @@
-import Providers from './providers';
+import App from '../App';
 
 export const metadata = {
   title: 'Anyfood',
@@ -10,10 +10,10 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body>
         <div id='root'>
-          <Providers>
+          <App>
             {children}
-          </Providers>
-          </div>
+          </App>
+        </div>
       </body>
     </html>
   );
