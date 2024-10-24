@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+'use client';
 import { Cart } from '../Cart/Cart';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
@@ -6,12 +6,12 @@ import { ProgressBar } from '../ProgressBar/ProgressBar';
 
 import styles from './Loyout.module.css';
 
-export const Layout = () => {
+export const Layout = ({children}) => {
   return (
     <div className={styles.loyout}>
       <ProgressBar />
       <Header />
-      <Outlet/>
+        {children}
       <Cart />
       <Footer />
     </div>

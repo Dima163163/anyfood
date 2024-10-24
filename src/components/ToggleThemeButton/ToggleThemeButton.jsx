@@ -1,3 +1,4 @@
+'use client';
 import { useTheme } from '../../context/themeContext/useTheme';
 import Button from '../Button/Button';
 

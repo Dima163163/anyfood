@@ -1,11 +1,11 @@
+'use client';
 import { useState } from 'react';
 import { useWatch } from '../../hooks/useWatch';
 
 import styles from './Watch.module.css';
 
 export const Watch = () => {
-  const date = new Date().toLocaleTimeString();
-  const [time, setTime] = useState(date);
+  const [time, setTime] = useState('');
   useWatch(setTime);
 
   return (

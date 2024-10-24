@@ -1,26 +1,39 @@
+'use client'
 import classNames from 'classnames';
 import { useTheme } from '../../context/themeContext/useTheme';
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
 
 import styles from './RouterLink.module.css';
+import { useParams, usePathname } from 'next/navigation';
 
-export const RouterLink = ({ text, to, type = '' }) => {
+export const RouterLink = ({ text, to, type = '', linkPath=''}) => {
   const { theme } = useTheme();
+  const params = useParams();
+  const {restaurantId} = params;
+  const pathname = usePathname();
 
+  let link = to.split('/').at(-1)
+  let restLink
+  if (linkPath) {
+    restLink = pathname.split('/').at(-1)
+  }
+
+  const isActive = linkPath ? restLink === link : restaurantId === link;
   return (
-    <NavLink
-      className={({ isActive }) =>
+    <Link className={
         classNames(
           styles.navTab,
+          type === 'navLink' && styles.navLink,
           type === 'btn' && styles.btn,
           theme === 'light' ? styles.light : styles.dark,
-          isActive && type === 'link' ? styles.linkActive : null,
-          isActive && type === 'tab' ? styles.tabActive : null
+          isActive && type === 'tab' && styles.tabActive,
+          isActive && type === 'link' && styles.linkActive,
+          isActive && type === 'navLink' && styles.navLinkActive
         )
       }
-      to={to}
+      href={to}
     >
       {text}
-    </NavLink>
+    </Link>
   );
 };

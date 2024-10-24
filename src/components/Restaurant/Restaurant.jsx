@@ -1,17 +1,19 @@
+'use client';
 import { Container } from '../Container/Container';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
-
 import styles from './Restaurant.module.css';
 import { useEffect } from 'react';
 import { RouterLink } from '../RouterLink/RouterLink';
+import { useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
-export const Restaurant = ({ name }) => {
-  const { restaurantId } = useParams();
-  const navigate = useNavigate();
+export const Restaurant = ({ name, children }) => {
+  const params = useParams();
+  const { restaurantId } = params;
+  const router = useRouter();
 
   useEffect(() => {
-    navigate('menu');
-  }, [navigate, restaurantId]);
+    router.push(`/restaurants/${restaurantId}/menu`);
+  }, [router, restaurantId]);
 
   if (!name) {
     return null;
@@ -22,10 +24,20 @@ export const Restaurant = ({ name }) => {
       <div className={styles.restautantWrapper}>
         <h2 className={styles.restaurantTitle}>{name}</h2>
         <div className={styles.tabsWrapper}>
-          <RouterLink to='menu' text='Меню' type='link' />
-          <RouterLink to='reviews' text='Отзывы' type='link' />
+          <RouterLink
+            to={`/restaurants/${restaurantId}/menu`}
+            text='Меню'
+            type='link'
+            linkPath={true}
+          />
+          <RouterLink
+            to={`/restaurants/${restaurantId}/reviews`}
+            text='Отзывы'
+            type='link'
+            linkPath={true}
+          />
         </div>
-        <Outlet />
+        {children}
       </div>
     </Container>
   );

@@ -1,13 +1,15 @@
+'use client'
 import { ItemMenu } from '../ItemMenu/ItemMenu';
 
 import styles from './RestaurantMenu.module.css';
 
-import { useParams } from 'react-router-dom';
 import { useGetDishesByRestaurantQuery } from '../../redux/services/api/api';
 import { Loader } from '../Loader/Loader';
+import { useParams } from 'next/navigation';
 
 export const RestaurantMenu = () => {
-  const { restaurantId } = useParams();
+  const params = useParams();
+  const { restaurantId } = params;
 
   const { data, isLoading, isError } =
     useGetDishesByRestaurantQuery(restaurantId);
