@@ -1,7 +1,7 @@
-import { RestaurantPage } from '../../../../pages/RestaurantPage/RestaurantPage';
 import getRestaurantById from '../../../services/getRestaurantById';
 import { Suspense } from 'react';
 import Loading from './loading';
+import { RestaurantContainer } from '../../../../components/Restaurant/Restaurant.container';
 
 export const generateStaticParams = () => {
   return [
@@ -17,7 +17,6 @@ export async function generateMetadata({ params }) {
   ).then((res) => res.json());
 
   const { name } = result;
-  console.log('name: ', name);
 
   return {
     title: name
@@ -30,9 +29,8 @@ export default async function RestaurantLayout({children, params}) {
 
   return (
     <Suspense fallback={<Loading/>}>
-      <RestaurantPage name={restaurant.name}>
-        {children}
-      </RestaurantPage>
+      <RestaurantContainer name={restaurant.name}>
+        {children}</RestaurantContainer>
     </Suspense>
   )
 }

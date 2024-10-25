@@ -10,7 +10,6 @@ export async function generateMetadata({ params }) {
   ).then((res) => res.json());
 
   const { name } = result;
-  console.log('name: ', name);
 
   return {
     title: name
