@@ -1,4 +1,3 @@
-'use client'
 import styles from './DishPage.module.css';
 
 export const DishPage = ({children}) => {

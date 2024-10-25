@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useUser } from '../../context/userContext/useUser';
 import { DishCounter } from '../DishCounter/DishCounter';
 import { RouterLink } from '../RouterLink/RouterLink';

@@ -3,19 +3,6 @@ import { RestaurantMenu } from '../../../../../components/RestaurantMenu/Restaur
 import getDishesByRestaurantId from '../../../../services/getDishesByRestaurantId';
 import Loading from './loading';
 
-export async function generateMetadata({ params }) {
-  const { restaurantId } = await params;
-  const result = await fetch(
-    `http://localhost:3001/api/restaurant/${restaurantId}`
-  ).then((res) => res.json());
-
-  const { name } = result;
-
-  return {
-    title: name
-  };
-}
-
 export default async function MenuPage({params}) {
   const {restaurantId} = await params;
   const dishes = await getDishesByRestaurantId(restaurantId);

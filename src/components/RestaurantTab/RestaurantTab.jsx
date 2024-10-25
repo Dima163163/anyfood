@@ -1,5 +1,3 @@
-'use client'
-
 import { RouterLink } from '../RouterLink/RouterLink';
 
 export const RestaurantTab = ({ id, name }) => {

@@ -1,4 +1,3 @@
-'use client'
 import styles from './ResturantsTabsSection.module.css';
 
 export const ResturantsTabsSection = ({children}) => {

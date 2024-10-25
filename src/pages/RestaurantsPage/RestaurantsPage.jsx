@@ -1,3 +1,4 @@
+'use client'
 import { Container } from '../../components/Container/Container';
 import { RestaurantsTabsWrapper } from '../../components/RestaurantsTabsWrapper/RestaurantsTabsWrapper';
 import { RestaurantTab } from '../../components/RestaurantTab/RestaurantTab';

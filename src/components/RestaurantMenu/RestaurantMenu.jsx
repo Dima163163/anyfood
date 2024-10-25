@@ -1,4 +1,3 @@
-'use client'
 import { ItemMenu } from '../ItemMenu/ItemMenu';
 
 import styles from './RestaurantMenu.module.css';
