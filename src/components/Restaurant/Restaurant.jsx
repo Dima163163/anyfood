@@ -6,7 +6,7 @@ import { RouterLink } from '../RouterLink/RouterLink';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
-export const Restaurant = ({ name, children }) => {
+export const Restaurant = ({ children, name }) => {
   const params = useParams();
   const { restaurantId } = params;
   const router = useRouter();
