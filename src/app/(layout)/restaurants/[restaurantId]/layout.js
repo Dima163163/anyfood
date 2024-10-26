@@ -1,6 +1,4 @@
 import getRestaurantById from '../../../services/getRestaurantById';
-import { Suspense } from 'react';
-import Loading from './loading';
 import { RestaurantContainer } from '../../../../components/Restaurant/Restaurant.container';
 
 export const generateStaticParams = () => {
@@ -28,9 +26,8 @@ export default async function RestaurantLayout({children, params}) {
   const restaurant = await getRestaurantById(restaurantId);
 
   return (
-    <Suspense fallback={<Loading/>}>
-      <RestaurantContainer name={restaurant.name}>
-        {children}</RestaurantContainer>
-    </Suspense>
+    <RestaurantContainer name={restaurant.name}>
+      {children}
+    </RestaurantContainer>
   )
 }
