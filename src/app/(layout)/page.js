@@ -1,3 +1,3 @@
 export default function LayoutPage () {
-  return <></>
+  return null;
 }

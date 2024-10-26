@@ -1,1 +1,3 @@
-export default async function RestPage() {}
+export default async function RestPage() {
+  return null;
+}
