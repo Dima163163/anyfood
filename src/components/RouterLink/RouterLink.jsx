@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import classNames from 'classnames';
 import { useTheme } from '../../context/themeContext/useTheme';
 import Link from 'next/link';

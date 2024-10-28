@@ -1,3 +1,3 @@
-export default function RestaurantPage() {
-  return <></>;
+export default async function RestPage() {
+  return null;
 }

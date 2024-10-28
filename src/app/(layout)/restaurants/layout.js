@@ -1,9 +1,11 @@
-'use client'
 import { RestaurantsPage } from '../../../pages/RestaurantsPage/RestaurantsPage';
+import { getRestaurants } from '../../services/getRestaurants';
 
-export default function RestaurantsLayout({children}) {
+export default async function RestaurantsLayout({children}) {
+  const restaurants = await getRestaurants();
+
   return (
-    <RestaurantsPage>
+    <RestaurantsPage restaurants={restaurants}>
       {children}
     </RestaurantsPage>
   )

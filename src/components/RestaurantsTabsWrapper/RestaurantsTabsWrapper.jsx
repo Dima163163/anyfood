@@ -1,4 +1,3 @@
-'use client'
 import styles from './RestaurantsTabsWrapper.module.css';
 
 export const RestaurantsTabsWrapper = ({children}) => {

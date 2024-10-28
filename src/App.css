@@ -1,9 +1,14 @@
+@font-face {
+  font-family: 'Roboto';
+  src: local('./fonts/Roboto-Regular'), local('RobotoRegular'),
+      url('./fonts/Roboto-Regular.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 html,
 body {
   height: 100%;
-}
-
-.active {
-  color: orangered !important;
-  border-bottom: 2px solid orangered !important;
+  font-family: 'Roboto' sans-serif;
 }

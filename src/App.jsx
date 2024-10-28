@@ -3,18 +3,17 @@ import { UserContextProvider } from './context/userContext/UserContextProvider';
 
 import 'normalize.css';
 import './App.css';
-import { ReduxProvider } from './redux/ReuduxProvider/ReduxProvider';
-
+import { StoreProvider } from './redux/StoreProvider/StoreProvider';
 
 const App = ({children}) => {
   return (
-    <ReduxProvider>
+    <StoreProvider>
       <ThemeContextProvider>
         <UserContextProvider>
           {children}
         </UserContextProvider>
       </ThemeContextProvider>
-    </ReduxProvider>
+    </StoreProvider>
   );
 };
 

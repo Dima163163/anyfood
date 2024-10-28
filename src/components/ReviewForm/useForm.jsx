@@ -1,3 +1,4 @@
+'use client';
 import { useReducer } from 'react';
 
 const DEFAULT_FROM_VALUE = {

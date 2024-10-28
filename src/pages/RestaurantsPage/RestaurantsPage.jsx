@@ -1,34 +1,26 @@
-'use client';
+'use client'
+import { useEffect } from 'react';
 import { Container } from '../../components/Container/Container';
 import { RestaurantsTabsWrapper } from '../../components/RestaurantsTabsWrapper/RestaurantsTabsWrapper';
 import { RestaurantTab } from '../../components/RestaurantTab/RestaurantTab';
 import { ResturantsTabsSection } from '../../components/ResturantsTabsSection/ResturantsTabsSection';
-import { Loader } from '../../components/Loader/Loader';
-import { useGetRestaurantsQuery } from '../../redux/services/api/api';
 
 import styles from './RestaurantsPage.module.css';
+import { useRouter } from 'next/navigation';
 
-export const RestaurantsPage = ({ children }) => {
-  const { data, isLoading, isError } = useGetRestaurantsQuery(undefined);
+export const RestaurantsPage = ({ restaurants, children }) => {
+  const router = useRouter();
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (isError) {
-    return <div>Error</div>;
-  }
-
-  if (!data.length) {
-    return null;
-  }
+  useEffect(() => {
+    router.push(`/restaurants/${restaurants[0].id}`)
+  })
 
   return (
     <main className={styles.restaurantsPage}>
       <ResturantsTabsSection>
         <Container>
           <RestaurantsTabsWrapper>
-            {data.map(({ id, name }) => (
+            {restaurants.map(({ id, name }) => (
               <RestaurantTab key={id} id={id} name={name} />
             ))}
           </RestaurantsTabsWrapper>
